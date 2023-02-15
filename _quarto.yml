@@ -1,5 +1,9 @@
 project:
   title: "Git y GitHub"
+  output-dir: docs
+
+execute:
+  freeze: auto
 
 editor:
   render-on-save: true
