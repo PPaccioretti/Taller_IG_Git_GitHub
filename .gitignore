@@ -1,2 +1,4 @@
 .quarto
 *_files
+/.quarto/
+.Rproj.user
