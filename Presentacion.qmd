@@ -1,4 +1,13 @@
-
+---
+format:
+  revealjs: 
+    slide-number: true
+    chalkboard: 
+      buttons: true
+    preview-links: auto
+    logo: "https://ig.conae.unc.edu.ar/wp-content/uploads/sites/68/2022/04/G-UNC-CONAE-C.png"
+    css: reveal.scss
+---
 
 # {background-color="#1A428A" background-image="https://ig.conae.unc.edu.ar/wp-content/uploads/sites/68/2022/04/G-UNC-CONAE-C.png"  background-size="60% auto" style="z-index: 4;"}
 
@@ -8,7 +17,7 @@
 :::
 
 
-# Git y GitHub {background-color="#1A428A" background-image="/img/presentation_title.png" background-size="auto 100%" background-position="right" style="height: 100%;  display: flex; align-items: center; justify-content: left; z-index: 4;" } 
+# Git y GitHub {background-color="#1A428A" background-image="img/presentation_title.png" background-size="auto 100%" background-position="right" style="height: 100%;  display: flex; align-items: center; justify-content: left; z-index: 4;" } 
 
 ... y un poquito de Quarto
 
@@ -16,9 +25,9 @@
 :::: {style="height: 100%; display: flex; align-items: center; justify-content: left;"} 
 
 ::: {style="font-size: 1.5em; justify-content: 'center';"}
-Veronica Andreo
-
 Pablo Paccioretti
+
+Verónica Andreo
 :::
 ::::
  
