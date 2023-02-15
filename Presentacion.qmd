@@ -7,6 +7,8 @@ format:
     preview-links: auto
     logo: "https://ig.conae.unc.edu.ar/wp-content/uploads/sites/68/2022/04/G-UNC-CONAE-C.png"
     css: reveal.scss
+
+output-file: index.html
 ---
 
 # {background-color="#1A428A" background-image="https://ig.conae.unc.edu.ar/wp-content/uploads/sites/68/2022/04/G-UNC-CONAE-C.png"  background-size="60% auto" style="z-index: 4;"}

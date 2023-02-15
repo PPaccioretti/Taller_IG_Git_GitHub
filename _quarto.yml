@@ -3,14 +3,3 @@ project:
 
 editor:
   render-on-save: true
-
-format:
-  revealjs:
-    theme: [reveal.scss]
-    slide-number: c/t
-    width: 1600
-    height: 900
-    logo: "https://ig.conae.unc.edu.ar/wp-content/uploads/sites/68/2022/04/G-UNC-CONAE-C.png"
-    # footer: "[Get started with Quarto](https://rstudio-conf-2022.github.io/get-started-quarto/)"
-    # css: ["theme.css"]
-    echo: true
