@@ -338,55 +338,14 @@ Aborting
 Updating 93c8128..845dc10
 ```
 
-```{python}
-2+2
-```
-
-```{r}
-rnorm(3)
-```
-
-
 #
 
 ---
 
 
-
-```{python}
-2+2
-```
-
-
-```{python}
-def suma(x,y):
-  print(x + y)
-```
-
-
-```{python}
-suma(2,4)
-```
-
-
-
-```{r}
-rnorm(2)
-```
-
-
-
 ```{{r}}
 suma(3,5)
 ```
-
-
-```{r}
-#| warning: true
-#| error: true
-suma(3,5)
-```
- 
 
  ---
 
