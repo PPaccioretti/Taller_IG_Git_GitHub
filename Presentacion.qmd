@@ -1,0 +1,352 @@
+
+
+# {background-color="#1A428A" background-image="https://ig.conae.unc.edu.ar/wp-content/uploads/sites/68/2022/04/G-UNC-CONAE-C.png"  background-size="60% auto" style="z-index: 4;"}
+
+
+::: footer
+
+:::
+
+
+# Git y GitHub {background-color="#1A428A" background-image="/img/presentation_title.png" background-size="auto 100%" background-position="right" style="height: 100%;  display: flex; align-items: center; justify-content: left; z-index: 4;" } 
+
+... y un poquito de Quarto
+
+
+:::: {style="height: 100%; display: flex; align-items: center; justify-content: left;"} 
+
+::: {style="font-size: 1.5em; justify-content: 'center';"}
+Veronica Andreo
+
+Pablo Paccioretti
+:::
+::::
+ 
+
+::: footer
+ 
+:::
+
+## Presteps
+
+- Tener git instalado en la PC [Windows](https://gitforwindows.org/)
+- Crear cuenta en [GitHub](https://github.com/)
+- Instalar Quarto ([https://quarto.org/docs/download/](https://quarto.org/docs/download/))
+
+::: {.callout-note appearance="simple"}
+
+Por defecto Git está instalado en la mayoría de las PCs que tienen Mac o Linux. En Windows se puede instalar desde [aqui](https://gitforwindows.org/)
+
+Quarto puede usarse con: VS Code, RStudio, Jupyter, Neovim, otros editores de texto
+:::
+
+## Outline
+
+- Que es Git 
+- Git Workflow local
+  * Crear un repositorio (*repo*)
+  * Agregar archivos, _commit_ 
+- Que es GitHub/GitLab/BitBucket....
+- GitHub Workflow
+  * Crear repo en GitHub
+  * Push
+  * Pull request
+
+
+## Qué es Git?
+
+- Es un programa de control de versiones por línea de comandos que permite:
+  - Administrar archivos, carpetas
+  - Realizar un seguimiento de los cambios a lo largo del tiempo
+  - Volver a versiones anteriores
+
+
+::: {.callout-tip appearance="simple"}
+Para utilizar Git no es necesario contar con conexión a internet. Los desarrolladores pueden trabajar independientemente de manera local y luego combinar los cambios.
+:::
+
+
+::: {.callout-important}
+## Cuando debería usar Git? 
+
+Se debería utilizar principalmente para trabajar/editar archivos de texto.
+No se recomienda para imágenes, películas, música o archivos como pdf, doc, etc.
+:::
+
+
+## ¿Qué es un repositorio?
+
+- repo = repositorio = _repository_
+- Por lo general es utilizado para organizar un *único* proyecto
+- Los repos pueden contener carpetas, archivos, imágenes, videos....
+
+
+## Git Workflow local
+
+(@) Iniciar un nuevo proyecto en una carpeta
+
+```{{bash}}
+git init
+```
+
+(@) Agregar archivos usando un editor de texto
+(@) Agregar cada cambio que se hizo en la carpeta
+
+```{{bash}}
+git add .
+```
+(@) Commit el cambio en el repositorio
+
+```{{bash}}
+git commit -m "Un mensaje descriptivo y corto"
+```
+
+
+Hacer cambios  - Working  add
+Agregar cambios - Staging index  commit
+Commit cambios  - Repositorio
+
+
+::: {.callout-tip}
+## Como deberían ser los mensajes de cada commit
+
+Cada mensaje debería explicar lo que hace (en presente). Debería ser una oración corta ($\le 72$ caracteres), que describa y resuma los cambios que se realizaron. 
+:::
+
+## Revisando los cambios
+
+### Cómo ver qué se modificó? 
+
+```{{bash}}
+git log
+```
+### Cómo ver qué se está modificando? 
+
+```{{bash}}
+git status
+```
+
+
+### Cómo ver qué cambió? 
+
+```{{bash}}
+git diff
+git diff nombreArchivo.txt
+git diff --staged
+```
+
+## Otros comandos que podrían resultar útiles
+
+Eliminar arhicos del repo
+
+```{{bash}}
+git rm nombreArchivo.py
+```
+
+Renpombrar/Mover archivos
+
+```{{bash}}
+git mv nombreArchivo.py OtroNombre.py
+```
+
+## Los comandos más usados
+
+```{{bash}}
+git init
+git status
+git log
+git add
+git commit -m "blabla"
+git diff
+git rm
+git mv
+```
+
+## Volviendo en el tiempo
+
+
+```{{bash}}
+git checkout archivo
+git checkout branch
+git checkout commitID
+```
+Deshacer cambios hechos *antes* de hacer el commit. Staging area
+
+```{{bash}}
+git reset HEAD nombreArchivo.r
+```
+
+Deshacer cambios hechos *luego* de hacer el commit. Repository
+```{{bash}}
+git commit --ammend -m "bla bla"
+```
+
+## Ramas/Branch
+
+- Permiten probar nuevos cambios. 
+- Si un cambio no funcionó, se puede eliminar la rama sin necesidad de deshacer cambios en la rama principal
+- Si un cambio funcionó, se puede commbinar (merge) a la rama principal
+- Siempre se utiliza el mismo directorio de trabajo
+
+- En que Rama _branch_ estoy?
+```{{bash}}
+git branch
+```
+
+- Cómo creo una rama?
+```{{bash}}
+git branch nueva_rama
+```
+
+- Cómo cambio entre ramas?
+```{{bash}}
+git checkout nueva_rama
+```
+
+::: {.callout-tip appearance="simple"}
+Se puede cambiar entre ramas y realizar commits. Cada rama está separada de las otras ramas. 
+ 
+Antes de cambiar entre ramas, el directorio de trabajo debería estar sin conflictos.
+:::
+
+- Como veo las diferencias ramas?
+
+```{{bash}}
+git diff una_rama..otra_rama
+```
+
+## Cómo se combinan las ramas? 
+
+Desde la rama desde la cual se quiere unir la otra rama
+
+```{{bash}}
+git merge la_otra_rama
+```
+
+## Conflictos cuando se combinan
+
+- Se dan cuando dos commits tienen cambios en la misma linea.
+- Git identificará los conflictos pero no lo solucionará
+
+Alternativas:
+
+- Abortar el merge `git merge --abort`
+- Arreglar manualmente los conflictos
+
+```{{bash}}
+git log  --graph --oneline --all --decorate
+```
+
+::: {.callout-tip}
+## Como evitar algunos conflictos
+
+- Combinar (merge) seguido
+- Mantener cada commit simple y enfocado a determinados cambios/solucies/
+- Combinar lo que sucede y en la rama en master de manera frecuente. 
+:::
+
+
+## Qué es GitHub? 
+
+
+
+https://kinsta.com/knowledgebase/git-vs-github/
+
+GitHub makes it easier to collaborate using git. It’s a platform that can hold repositories of code in cloud-based storage.
+
+
+https://www.slideshare.net/bcbbslides/introduction-to-git-and-github-72514916
+
+## Codigos ejecutados
+
+
+```{{bash}}
+py -m pip install jupyter #sudo
+
+git init .
+curl -o .gitignore --fail --show-error --silent --location https://raw.github.com/github/gitignore/master/R.gitignore
+# curl -o .gitignore --fail --show-error --silent --location https://raw.github.com/github/gitignore/master/Python.gitignore
+
+```
+## Imoportar Proyecto
+
+Creando un repositorio local nuevo
+
+```{{bash}}
+echo "# Taller_IG_Git_GitHub" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/PPaccioretti/Taller_IG_Git_GitHub.git
+git push -u origin main
+```
+
+Agregando el repositorio remoto 
+
+```{{bash}}
+git remote add origin https://github.com/PPaccioretti/Taller_IG_Git_GitHub.git
+git branch -M main
+git push -u origin main
+```
+
+
+```{python}
+2+2
+```
+
+```{r}
+rnorm(3)
+```
+
+
+#
+
+---
+
+
+
+```{python}
+2+2
+```
+
+
+```{python}
+def suma(x,y):
+  print(x + y)
+```
+
+
+```{python}
+suma(2,4)
+```
+
+
+
+```{r}
+rnorm(2)
+```
+
+
+
+```{{r}}
+suma(3,5)
+```
+
+
+```{r}
+#| warning: true
+#| error: true
+suma(3,5)
+```
+ 
+
+ ---
+
+:::: {.miclase}
+
+![](https://ig.conae.unc.edu.ar/wp-content/uploads/sites/68/2022/04/G-UNC-CONAE-C.png)
+
+::::
+
+---
