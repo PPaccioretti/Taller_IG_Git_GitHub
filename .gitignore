@@ -2,4 +2,4 @@
 *_files
 /.quarto/
 .Rproj.user
-
+.Rhistory
