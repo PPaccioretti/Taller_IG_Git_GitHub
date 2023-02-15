@@ -291,7 +291,7 @@ git remote add origin https://github.com/PPaccioretti/Taller_IG_Git_GitHub.git
 git push -u origin main
 ```
 
-Agregando el repositorio remoto 
+## Agregando el repositorio remoto 
 
 ```{{bash}}
 git remote add origin https://github.com/PPaccioretti/Taller_IG_Git_GitHub.git
@@ -299,6 +299,42 @@ git branch -M main
 git push -u origin main
 ```
 
+```{{bash}}
+git clone https://github.com/veroandreo/Taller_IG_Git_GitHub.git
+cd Taller_IG_Git_GitHub
+ls
+```
+
+```{{bash}}
+git remote add upstream https://github.com/PPaccioretti/Taller_IG_Git_GitHub.git
+git remote -v
+```
+
+```{{bash}}
+$ git remote -v
+origin  https://github.com/veroandreo/Taller_IG_Git_GitHub.git (fetch)
+origin  https://github.com/veroandreo/Taller_IG_Git_GitHub.git (push)
+upstream  https://github.com/PPaccioretti/Taller_IG_Git_GitHub.git (fetch)
+upstream  https://github.com/PPaccioretti/Taller_IG_Git_GitHub.git (push)
+```
+
+
+```{{bash}}
+$ git pull
+remote: Enumerating objects: 10, done.
+remote: Counting objects: 100% (10/10), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 6 (delta 3), reused 5 (delta 3), pack-reused 0
+Unpacking objects: 100% (6/6), 1.18 KiB | 37.00 KiB/s, done.
+From https://github.com/PPaccioretti/Taller_IG_Git_GitHub
+   93c8128..845dc10  main       -> origin/main
+error: Your local changes to the following files would be overwritten by merge:
+        .gitignore
+        Presentacion.qmd
+Please commit your changes or stash them before you merge.
+Aborting
+Updating 93c8128..845dc10
+```
 
 ```{python}
 2+2
