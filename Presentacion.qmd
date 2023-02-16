@@ -104,7 +104,7 @@ git init
 ```{{bash}}
 git add .
 ```
-(@) Confirmar cambio en el repositorio
+(@) Registrar el cambio en el repositorio (commit)
 
 ```{{bash}}
 git commit -m "Un mensaje descriptivo y corto"
@@ -134,14 +134,14 @@ Para utilizarlo no es necesario internet. Es posible trabajar manera local y lue
 :::
 
 ::: {.callout-important}
-## Cuando se debería usar Git? 
+## Cuándo se debería usar git? 
 
-Principalmente para trabajar/editar archivos de texto.
+Principalmente para trabajar/editar archivos de texto plano, por ejemplo: `.py`, `.sh`, `.md`, `.qmd`, `.r`, etc.
 No se recomienda para imágenes, películas, música o archivos como pdf, docx, etc.
 :::
 
 ::: {.callout-tip}
-## Como deberían ser los mensajes de cada commit
+## Cómo deberían ser los mensajes de cada _commit_
 
 Mediante una oración corta e informativa ($\le 72$ caracteres), se debería describir y resumir los cambios que se realizaron.
 :::
@@ -149,12 +149,12 @@ Mediante una oración corta e informativa ($\le 72$ caracteres), se debería des
 
 ## Revisando los cambios
 
-- Cómo ver que se estuvo modificando? 
+- Cómo ver lo que se estuvo modificando? 
 
 ```{{bash}}
 git log
 ```
-- Cómo ver que archivos se están modificando? 
+- Cómo ver qué archivos se están modificando? 
 
 ```{{bash}}
 git status
@@ -194,7 +194,7 @@ git rm
 git mv
 ```
 
-## Ramas/Branch
+## Ramas / Branches
 
 - Permiten probar nuevos cambios
 - Si un cambio no funcionó, se puede eliminar la rama sin necesidad de deshacer cambios en la rama principal
@@ -207,7 +207,7 @@ git mv
 
 ::: {.column width="50%"}
 
-- En que Rama _branch_ estoy?
+- En qué rama _branch_ estoy?
 ```{{bash}}
 git branch
 ```
@@ -243,9 +243,9 @@ git diff una_rama..otra_rama
 ::: {.callout-tip}
 ## Algunos tips
 
-- Se puede cambiar entre ramas y realizar commits. 
+- Se puede cambiar entre ramas y realizar commits en cada una de ellas. 
 
-- Cada rama está separada y es independiente de las otras ramas. 
+- Cada rama está separada y es independiente de las otras ramas, pero contiene todo lo que tenía la rama principal al momento del _branching_. 
 
 - Antes de cambiar entre ramas, el directorio de trabajo debería estar sin conflictos ni cambios no confirmados (_commiteados_).
 :::
@@ -260,10 +260,10 @@ Desde la rama desde la cual se quiere unir la otra rama
 git merge la_otra_rama
 ```
 
-## Conflictos cuando se combinan
+## Conflictos cuando se combinan cambios/ramas
 
-- Se dan cuando dos commits tienen cambios en la misma línea de código.
-- Git identificará los conflictos pero no los solucionará
+- Se dan cuando dos _commits_ tienen modificaciones sobre la misma línea de código.
+- git identificará los conflictos pero no los solucionará; queda a criterio del usuario.
 
 Alternativas:
 
@@ -277,7 +277,7 @@ Alternativas:
 
 - Combinar los trabajos en la rama de manera frecuente
 - Mantener cada commit simple y enfocado a determinados cambios/soluciones
-- Combinar lo que sucede en la rama en master de manera frecuente. 
+- Combinar los cambios en la rama de trabajo con la rama principal de manera frecuente. 
 :::
 
 
@@ -332,15 +332,15 @@ Repository
 
 GitHub ayuda a colaborar entre usuarios usando git. 
 
-Es una plataforma que contiene repositorios almacenados en la nube, diferentes desarrolladores pueden trabajar en un único proyecto y ver los cambios realizados. 
+Es una plataforma que contiene repositorios almacenados en la nube, diferentes desarrolladores pueden contribuir a un único proyecto y ver los cambios realizados por otras personas. 
 
 ----
 
 ::::{.columns}
 
 :::{.column}
-##### Git
-- Git es un software para control de versiones. Permite a los desarrolladores registrar los cambios de los proyectos.
+##### git
+- git es un software para control de versiones. Permite llevar un registro de los cambios realizados en un proyecto.
 :::
 
 :::{.column}
