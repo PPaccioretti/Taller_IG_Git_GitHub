@@ -63,10 +63,12 @@ Quarto puede usarse con: VS Code, RStudio, Jupyter, Neovim, otros editores de te
 :::
 
 ::: {.column width="50%"}
-- Que es GitHub/ GitLab/BitBucket/...
-- GitHub Workflow
-  * Crear repo en GitHub
-  * Push
+- Qué es GitHub
+- GitHub Workflow: Proyecto personal 
+  * Crear repo
+  * Push / Pull
+- GitHub Workflow: Proyecto colaborativo
+  * Fork / Clone
   * Pull request
 :::
 
