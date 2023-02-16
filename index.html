@@ -446,11 +446,15 @@
 </ul>
 </div><div class="column" style="width:50%;">
 <ul>
-<li>Que es GitHub/ GitLab/BitBucket/…</li>
-<li>GitHub Workflow
+<li>Qué es GitHub</li>
+<li>GitHub Workflow: Proyecto personal
 <ul>
-<li>Crear repo en GitHub</li>
-<li>Push</li>
+<li>Crear repo</li>
+<li>Push / Pull</li>
+</ul></li>
+<li>GitHub Workflow: Proyecto colaborativo
+<ul>
+<li>Fork / Clone</li>
 <li>Pull request</li>
 </ul></li>
 </ul>
@@ -490,7 +494,7 @@
 </ol>
 <div class="sourceCode" id="cb2"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a href="#cb2-1"></a>git add .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="4" class="example" type="1">
-<li>Confirmar cambio en el repositorio</li>
+<li>Registrar el cambio en el repositorio (commit)</li>
 </ol>
 <div class="sourceCode" id="cb3"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb3-1"><a href="#cb3-1"></a>git commit -m "Un mensaje descriptivo y corto"</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column" style="width:25%;">
@@ -531,10 +535,10 @@ graph TD
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Cuando se debería usar Git?</strong></p>
+<p><strong>Cuándo se debería usar git?</strong></p>
 </div>
 <div class="callout-content">
-<p>Principalmente para trabajar/editar archivos de texto. No se recomienda para imágenes, películas, música o archivos como pdf, docx, etc.</p>
+<p>Principalmente para trabajar/editar archivos de texto plano, por ejemplo: <code>.py</code>, <code>.sh</code>, <code>.md</code>, <code>.qmd</code>, <code>.r</code>, etc. No se recomienda para imágenes, películas, música o archivos como pdf, docx, etc.</p>
 </div>
 </div>
 </div>
@@ -544,7 +548,7 @@ graph TD
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Como deberían ser los mensajes de cada commit</strong></p>
+<p><strong>Cómo deberían ser los mensajes de cada <em>commit</em></strong></p>
 </div>
 <div class="callout-content">
 <p>Mediante una oración corta e informativa (<span class="math inline">\(\le 72\)</span> caracteres), se debería describir y resumir los cambios que se realizaron.</p>
@@ -555,11 +559,11 @@ graph TD
 <section id="revisando-los-cambios" class="slide level2">
 <h2>Revisando los cambios</h2>
 <ul>
-<li>Cómo ver que se estuvo modificando?</li>
+<li>Cómo ver lo que se estuvo modificando?</li>
 </ul>
 <div class="sourceCode" id="cb4"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a href="#cb4-1"></a>git log</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li>Cómo ver que archivos se están modificando?</li>
+<li>Cómo ver qué archivos se están modificando?</li>
 </ul>
 <div class="sourceCode" id="cb5"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb5-1"><a href="#cb5-1"></a>git status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
@@ -570,8 +574,26 @@ graph TD
 </section>
 <section id="otros-comandos-que-podrían-resultar-útiles" class="slide level2">
 <h2>Otros comandos que podrían resultar útiles</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
 <p>Eliminar archivos del repo</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb7-1"><a href="#cb7-1"></a>git rm nombreArchivo.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="width:60%;">
+<div class="callout callout-important callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Cuidado!</strong></p>
+</div>
+<div class="callout-content">
+<p>Esto también elimina el archivo del repositorio.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
 <p>Renombrar/Mover archivos</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb8-1"><a href="#cb8-1"></a>git mv nombreArchivo.py OtroNombre.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
@@ -586,8 +608,8 @@ graph TD
 <span id="cb9-7"><a href="#cb9-7"></a>git rm</span>
 <span id="cb9-8"><a href="#cb9-8"></a>git mv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="ramasbranch" class="slide level2">
-<h2>Ramas/Branch</h2>
+<section id="ramas-branches" class="slide level2">
+<h2>Ramas / Branches</h2>
 <ul>
 <li>Permiten probar nuevos cambios</li>
 <li>Si un cambio no funcionó, se puede eliminar la rama sin necesidad de deshacer cambios en la rama principal</li>
@@ -600,7 +622,7 @@ graph TD
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
-<li>En que Rama <em>branch</em> estoy?</li>
+<li>En qué rama <em>branch</em> estoy?</li>
 </ul>
 <div class="sourceCode" id="cb10"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb10-1"><a href="#cb10-1"></a>git branch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
@@ -635,8 +657,8 @@ graph TD
 </div>
 <div class="callout-content">
 <ul>
-<li><p>Se puede cambiar entre ramas y realizar commits.</p></li>
-<li><p>Cada rama está separada y es independiente de las otras ramas.</p></li>
+<li><p>Se puede cambiar entre ramas y realizar commits en cada una de ellas.</p></li>
+<li><p>Cada rama está separada y es independiente de las otras ramas, pero contiene todo lo que tenía la rama principal al momento del <em>branching</em>.</p></li>
 <li><p>Antes de cambiar entre ramas, el directorio de trabajo debería estar sin conflictos ni cambios no confirmados (<em>commiteados</em>).</p></li>
 </ul>
 </div>
@@ -648,11 +670,11 @@ graph TD
 <p>Desde la rama desde la cual se quiere unir la otra rama</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb15-1"><a href="#cb15-1"></a>git merge la_otra_rama</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="conflictos-cuando-se-combinan" class="slide level2">
-<h2>Conflictos cuando se combinan</h2>
+<section id="conflictos-cuando-se-combinan-cambiosramas" class="slide level2">
+<h2>Conflictos cuando se combinan cambios/ramas</h2>
 <ul>
-<li>Se dan cuando dos commits tienen cambios en la misma línea de código.</li>
-<li>Git identificará los conflictos pero no los solucionará</li>
+<li>Se dan cuando dos <em>commits</em> tienen modificaciones sobre la misma línea de código.</li>
+<li>git identificará los conflictos pero no los solucionará; queda a criterio del usuario.</li>
 </ul>
 <p>Alternativas:</p>
 <ul>
@@ -674,7 +696,7 @@ graph TD
 <ul>
 <li>Combinar los trabajos en la rama de manera frecuente</li>
 <li>Mantener cada commit simple y enfocado a determinados cambios/soluciones</li>
-<li>Combinar lo que sucede en la rama en master de manera frecuente.</li>
+<li>Combinar los cambios en la rama de trabajo con la rama principal de manera frecuente.</li>
 </ul>
 </div>
 </div>
@@ -706,15 +728,15 @@ graph TD
 <section id="qué-es-github" class="slide level2">
 <h2>Qué es GitHub?</h2>
 <p>GitHub ayuda a colaborar entre usuarios usando git.</p>
-<p>Es una plataforma que contiene repositorios almacenados en la nube, diferentes desarrolladores pueden trabajar en un único proyecto y ver los cambios realizados.</p>
+<p>Es una plataforma que contiene repositorios almacenados en la nube, diferentes desarrolladores pueden contribuir a un único proyecto y ver los cambios realizados por otras personas.</p>
 </section>
 <section class="slide level2">
 
 <div class="columns">
 <div class="column">
-<h5 id="git">Git</h5>
+<h5 id="git">git</h5>
 <ul>
-<li>Git es un software para control de versiones. Permite a los desarrolladores registrar los cambios de los proyectos.</li>
+<li>git es un software para control de versiones. Permite llevar un registro de los cambios realizados en un proyecto.</li>
 </ul>
 </div><div class="column">
 <h5 id="github">GitHub</h5>
@@ -726,20 +748,30 @@ graph TD
 </section>
 <section id="principales-acciones-en-github" class="slide level2">
 <h2>Principales acciones en GitHub</h2>
+<div style="font-size: calc(0.61em + 0.5vmin);">
 <dl>
 <dt>Fork</dt>
 <dd>
 El proceso de copiar el repositorio de otro desarrollador para poder modificarlo.
 </dd>
+<dt>Clone</dt>
+<dd>
+Crea una copia local del repositorio y sincroniza entre las dos ubicaciones
+</dd>
 <dt>Pull</dt>
 <dd>
-Una vez que se realizan los cambios, se pueden sugerir mendiante <em>pull request</em>
+Descarga contenido desde un repositorio remoto y actualizar el repositorio local
+</dd>
+<dt>Pull request</dt>
+<dd>
+Una vez que se realizan los cambios, se pueden sugerir mediante <em>pull request</em>
 </dd>
 <dt>Merge</dt>
 <dd>
 El dueño del repositorio puede combinar los cambios
 </dd>
 </dl>
+</div>
 </section></section>
 <section>
 <section id="aplicación-en-github" class="title-slide slide level1 center" data-background-color="#1A428A">
@@ -798,8 +830,8 @@ El dueño del repositorio puede combinar los cambios
 <span id="cb20-4"><a href="#cb20-4"></a>curl -o .gitignore --fail --show-error --silent --location https://raw.github.com/github/gitignore/master/R.gitignore</span>
 <span id="cb20-5"><a href="#cb20-5"></a># curl -o .gitignore --fail --show-error --silent --location https://raw.github.com/github/gitignore/master/Python.gitignore</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="imoportar-proyecto-propio" class="slide level2">
-<h2>Imoportar Proyecto Propio</h2>
+<section id="importar-proyecto-propio" class="slide level2">
+<h2>Importar Proyecto Propio</h2>
 <p>Creando un repositorio local nuevo</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb21-1"><a href="#cb21-1"></a>echo "# Taller_IG_Git_GitHub" &gt;&gt; README.md</span>
 <span id="cb21-2"><a href="#cb21-2"></a>git init</span>
@@ -809,7 +841,7 @@ El dueño del repositorio puede combinar los cambios
 <span id="cb21-6"><a href="#cb21-6"></a>git remote add origin https://github.com/PPaccioretti/Taller_IG_Git_GitHub.git</span>
 <span id="cb21-7"><a href="#cb21-7"></a>git push -u origin main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="imoportar-proyecto-propio-1" class="slide level2">
+<section id="imoportar-proyecto-propio" class="slide level2">
 <h2>Imoportar Proyecto Propio</h2>
 <p>Agregando el repositorio remoto en un repositorio local</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb22-1"><a href="#cb22-1"></a>git remote add origin https://github.com/PPaccioretti/Taller_IG_Git_GitHub.git</span>
