@@ -366,14 +366,23 @@ Es una plataforma que contiene repositorios almacenados en la nube, diferentes d
 
 ## Principales acciones en GitHub
 
+::: {style="font-size: calc(0.61em + 0.5vmin);"}
 Fork
 : El proceso de copiar el repositorio de otro desarrollador para poder modificarlo. 
 
-Pull
-: Una vez que se realizan los cambios, se pueden sugerir mendiante _pull request_
+Clone
+: Crea una copia local del repositorio y sincroniza entre las dos ubicaciones
+
+Pull 
+: Descarga contenido desde un repositorio remoto y actualizar el repositorio local 
+
+Pull request
+: Una vez que se realizan los cambios, se pueden sugerir mediante _pull request_
 
 Merge
 : El dueño del repositorio puede combinar los cambios 
+
+:::
 
 
 # Aplicación en GitHub {background-color="#1A428A"}
