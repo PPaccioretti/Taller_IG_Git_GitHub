@@ -6,7 +6,7 @@ format:
       buttons: true
     preview-links: auto
     logo: "https://ig.conae.unc.edu.ar/wp-content/uploads/sites/68/2022/04/G-UNC-CONAE-C.png"
-    css: reveal.scss
+    theme: 'reveal.scss'
 
 output-file: index.html
 ---
@@ -21,7 +21,7 @@ output-file: index.html
 
 # Git y GitHub {background-color="#1A428A" background-image="img/presentation_title.png" background-size="auto 100%" background-position="right" style="height: 100%;  display: flex; align-items: center; justify-content: left; z-index: 4;" } 
 
-... y un poquito de Quarto
+<!-- ... y un poquito de Quarto -->
 
 
 :::: {style="height: 100%; display: flex; align-items: center; justify-content: left;"} 
@@ -53,16 +53,26 @@ Quarto puede usarse con: VS Code, RStudio, Jupyter, Neovim, otros editores de te
 
 ## Outline
 
+:::: {.columns}
+
+::: {.column width="50%"}
 - Que es Git 
 - Git Workflow local
   * Crear un repositorio (*repo*)
   * Agregar archivos, _commit_ 
-- Que es GitHub/GitLab/BitBucket....
-- GitHub Workflow
-  * Crear repo en GitHub
-  * Push
-  * Pull request
+:::
 
+::: {.column width="50%"}
+- Qué es GitHub
+- GitHub Workflow: Proyecto personal 
+  * Crear repo
+  * Push / Pull
+- GitHub Workflow: Proyecto colaborativo
+  * Fork / Clone
+  * Pull request
+:::
+
+::::
 
 ## Qué es Git?
 
@@ -71,28 +81,18 @@ Quarto puede usarse con: VS Code, RStudio, Jupyter, Neovim, otros editores de te
   - Realizar un seguimiento de los cambios a lo largo del tiempo
   - Volver a versiones anteriores
 
-
-::: {.callout-tip appearance="simple"}
-Para utilizar Git no es necesario contar con conexión a internet. Los desarrolladores pueden trabajar independientemente de manera local y luego combinar los cambios.
-:::
-
-
-::: {.callout-important}
-## Cuando debería usar Git? 
-
-Se debería utilizar principalmente para trabajar/editar archivos de texto.
-No se recomienda para imágenes, películas, música o archivos como pdf, doc, etc.
-:::
-
-
 ## ¿Qué es un repositorio?
 
 - repo = repositorio = _repository_
 - Por lo general es utilizado para organizar un *único* proyecto
-- Los repos pueden contener carpetas, archivos, imágenes, videos....
+- Los repos pueden contener carpetas, archivos, imágenes, videos...
 
 
 ## Git Workflow local
+
+:::: {.columns}
+
+::: {.column width="75%"}
 
 (@) Iniciar un nuevo proyecto en una carpeta
 
@@ -100,65 +100,101 @@ No se recomienda para imágenes, películas, música o archivos como pdf, doc, e
 git init
 ```
 
-(@) Agregar archivos usando un editor de texto
-(@) Agregar cada cambio que se hizo en la carpeta
+(@) Agregar/Editar archivos
+(@) Registrar cada cambio
 
 ```{{bash}}
 git add .
 ```
-(@) Commit el cambio en el repositorio
+(@) Registrar el cambio en el repositorio (commit)
 
 ```{{bash}}
 git commit -m "Un mensaje descriptivo y corto"
 ```
+:::
+
+::: {.column width="25%"}
+
+```{mermaid}
+%%| fig-height: 5
 
 
-Hacer cambios  - Working  add
-Agregar cambios - Staging index  commit
-Commit cambios  - Repositorio
+graph TD
+  A[Working] -->|add| B(Staging index)
+  B --> |commit| C(Repository)
+```
 
+:::
+
+::::
+
+
+## Tips sobre Git
+
+::: {.callout-tip appearance="simple"}
+Para utilizarlo no es necesario internet. Es posible trabajar manera local y luego cargar/combinar los cambios.
+:::
+
+::: {.callout-important}
+## Cuándo se debería usar git? 
+
+Principalmente para trabajar/editar archivos de texto plano, por ejemplo: `.py`, `.sh`, `.md`, `.qmd`, `.r`, etc.
+No se recomienda para imágenes, películas, música o archivos como pdf, docx, etc.
+:::
 
 ::: {.callout-tip}
-## Como deberían ser los mensajes de cada commit
+## Cómo deberían ser los mensajes de cada _commit_
 
-Cada mensaje debería explicar lo que hace (en presente). Debería ser una oración corta ($\le 72$ caracteres), que describa y resuma los cambios que se realizaron. 
+Mediante una oración corta e informativa ($\le 72$ caracteres), se debería describir y resumir los cambios que se realizaron.
 :::
+
 
 ## Revisando los cambios
 
-### Cómo ver qué se modificó? 
+- Cómo ver lo que se estuvo modificando? 
 
 ```{{bash}}
 git log
 ```
-### Cómo ver qué se está modificando? 
+- Cómo ver qué archivos se están modificando? 
 
 ```{{bash}}
 git status
 ```
 
-
-### Cómo ver qué cambió? 
+- Cómo ver qué cambió de cada archivo? 
 
 ```{{bash}}
 git diff
 git diff nombreArchivo.txt
-git diff --staged
 ```
 
 ## Otros comandos que podrían resultar útiles
 
-Eliminar arhicos del repo
+::::: {.columns}
+
+:::: {.column width="40%"}
+Eliminar archivos del repo
 
 ```{{bash}}
 git rm nombreArchivo.py
 ```
+::::
+:::: {.column width="60%"}
+::: {.callout-important}
+## Cuidado! 
 
-Renpombrar/Mover archivos
+Esto también elimina el archivo del repositorio. 
+:::
+::::
+:::::
+
+Renombrar/Mover archivos
 
 ```{{bash}}
 git mv nombreArchivo.py OtroNombre.py
 ```
+
 
 ## Los comandos más usados
 
@@ -173,37 +209,23 @@ git rm
 git mv
 ```
 
-## Volviendo en el tiempo
+## Ramas / Branches
 
-
-```{{bash}}
-git checkout archivo
-git checkout branch
-git checkout commitID
-```
-Deshacer cambios hechos *antes* de hacer el commit. Staging area
-
-```{{bash}}
-git reset HEAD nombreArchivo.r
-```
-
-Deshacer cambios hechos *luego* de hacer el commit. Repository
-```{{bash}}
-git commit --ammend -m "bla bla"
-```
-
-## Ramas/Branch
-
-- Permiten probar nuevos cambios. 
+- Permiten probar nuevos cambios
 - Si un cambio no funcionó, se puede eliminar la rama sin necesidad de deshacer cambios en la rama principal
-- Si un cambio funcionó, se puede commbinar (merge) a la rama principal
+- Si un cambio funcionó, se puede combinar (merge) a la rama principal
 - Siempre se utiliza el mismo directorio de trabajo
 
-- En que Rama _branch_ estoy?
+--- 
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+- En qué rama _branch_ estoy?
 ```{{bash}}
 git branch
 ```
-
 - Cómo creo una rama?
 ```{{bash}}
 git branch nueva_rama
@@ -213,20 +235,39 @@ git branch nueva_rama
 ```{{bash}}
 git checkout nueva_rama
 ```
-
-::: {.callout-tip appearance="simple"}
-Se puede cambiar entre ramas y realizar commits. Cada rama está separada de las otras ramas. 
- 
-Antes de cambiar entre ramas, el directorio de trabajo debería estar sin conflictos.
 :::
 
-- Como veo las diferencias ramas?
+::: {.column width="50%"}
 
+- Cómo creo y cambio a la nueva rama?
+```{{bash}}
+git checkout -b nueva_rama
+```
+
+- Como veo las diferencias entre ramas?
 ```{{bash}}
 git diff una_rama..otra_rama
 ```
+:::
 
-## Cómo se combinan las ramas? 
+::::
+
+
+---
+
+::: {.callout-tip}
+## Algunos tips
+
+- Se puede cambiar entre ramas y realizar commits en cada una de ellas. 
+
+- Cada rama está separada y es independiente de las otras ramas, pero contiene todo lo que tenía la rama principal al momento del _branching_. 
+
+- Antes de cambiar entre ramas, el directorio de trabajo debería estar sin conflictos ni cambios no confirmados (_commiteados_).
+:::
+
+
+
+## Cómo se combinan ramas? 
 
 Desde la rama desde la cual se quiere unir la otra rama
 
@@ -234,39 +275,165 @@ Desde la rama desde la cual se quiere unir la otra rama
 git merge la_otra_rama
 ```
 
-## Conflictos cuando se combinan
+## Conflictos cuando se combinan cambios/ramas
 
-- Se dan cuando dos commits tienen cambios en la misma linea.
-- Git identificará los conflictos pero no lo solucionará
+- Se dan cuando dos _commits_ tienen modificaciones sobre la misma línea de código.
+- git identificará los conflictos pero no los solucionará; queda a criterio del usuario.
 
 Alternativas:
 
 - Abortar el merge `git merge --abort`
 - Arreglar manualmente los conflictos
 
-```{{bash}}
-git log  --graph --oneline --all --decorate
-```
+---
 
 ::: {.callout-tip}
 ## Como evitar algunos conflictos
 
-- Combinar (merge) seguido
-- Mantener cada commit simple y enfocado a determinados cambios/solucies/
-- Combinar lo que sucede y en la rama en master de manera frecuente. 
+- Combinar los trabajos en la rama de manera frecuente
+- Mantener cada commit simple y enfocado a determinados cambios/soluciones
+- Combinar los cambios en la rama de trabajo con la rama principal de manera frecuente. 
 :::
 
 
+
+
+```{{bash}}
+git log  --graph --oneline --all --decorate
+```
+
+
+## Volviendo en el tiempo
+
+Podemos ver los cambios que se estuvieron realizando y volver a versiones anteriores que ya fueron confirmadas (_commiteadas_)
+
+```{{bash}}
+git checkout archivo
+git checkout branch
+git checkout commitID
+```
+
+
+::::{.columns}
+
+:::{.column}
+
+
+Deshacer cambios hechos *antes* de hacer el commit. 
+
+```{{bash}}
+git reset HEAD nombreArchivo.r
+```
+:::{style="color: grey; text-align: center; font-size: 0.8em;"}
+Staging area
+:::
+
+:::
+
+:::{.column}
+Deshacer cambios hechos *luego* de hacer el commit. 
+```{{bash}}
+git commit --ammend -m "bla bla"
+```
+:::{style="color: grey; text-align: center; font-size: 0.8em;"}
+Repository
+:::
+
+:::
+
+::::
+
 ## Qué es GitHub? 
 
+GitHub ayuda a colaborar entre usuarios usando git. 
+
+Es una plataforma que contiene repositorios almacenados en la nube, diferentes desarrolladores pueden contribuir a un único proyecto y ver los cambios realizados por otras personas. 
+
+----
+
+::::{.columns}
+
+:::{.column}
+##### git
+- git es un software para control de versiones. Permite llevar un registro de los cambios realizados en un proyecto.
+:::
+
+:::{.column}
+##### GitHub
+- GitHub es una plataforma web que incorpora características de git para que puedan ser usadas de manera colaborativa.
+:::
+
+::::
 
 
-https://kinsta.com/knowledgebase/git-vs-github/
+## Principales acciones en GitHub
 
-GitHub makes it easier to collaborate using git. It’s a platform that can hold repositories of code in cloud-based storage.
+::: {style="font-size: calc(0.61em + 0.5vmin);"}
+Fork
+: El proceso de copiar el repositorio de otro desarrollador para poder modificarlo. 
+
+Clone
+: Crea una copia local del repositorio y sincroniza entre las dos ubicaciones
+
+Pull 
+: Descarga contenido desde un repositorio remoto y actualizar el repositorio local 
+
+Pull request
+: Una vez que se realizan los cambios, se pueden sugerir mediante _pull request_
+
+Merge
+: El dueño del repositorio puede combinar los cambios 
+
+:::
 
 
-https://www.slideshare.net/bcbbslides/introduction-to-git-and-github-72514916
+# Aplicación en GitHub {background-color="#1A428A"}
+
+---
+
+![](img/Creacion_Repo_GitHub.png){.r-stretch fig-align="center"}
+
+---
+
+![](img/Importar_Repo_GitHub.png){.r-stretch fig-align="center"}
+
+---
+
+![](img/Importado_Repo_GitHub.png){.r-stretch fig-align="center"}
+
+---
+
+![](img/fork_1.png){.r-stretch fig-align="center"}
+
+---
+
+![](img/fork_created.png){.r-stretch fig-align="center"}
+
+---
+
+![](img/clone_fork_https.png){.r-stretch fig-align="center"}
+
+---
+
+![](img/git_clone_repo_terminal.png){.r-stretch fig-align="center"}
+
+---
+
+![](img/create_fork.png){.r-stretch fig-align="center"}
+
+---
+
+![](img/add_upstream.png){.r-stretch fig-align="center"}
+
+---
+
+![](img/merge_pull_request.png){.r-stretch fig-align="center"}
+
+---
+
+![](img/merged_pr.png){.r-stretch fig-align="center"}
+
+---
 
 ## Codigos ejecutados
 
@@ -277,10 +444,10 @@ py -m pip install jupyter #sudo
 git init .
 curl -o .gitignore --fail --show-error --silent --location https://raw.github.com/github/gitignore/master/R.gitignore
 # curl -o .gitignore --fail --show-error --silent --location https://raw.github.com/github/gitignore/master/Python.gitignore
-
 ```
 
-## Importar Proyecto
+## Importar Proyecto Propio
+
 
 Creando un repositorio local nuevo
 
@@ -294,7 +461,9 @@ git remote add origin https://github.com/PPaccioretti/Taller_IG_Git_GitHub.git
 git push -u origin main
 ```
 
-## Agregando el repositorio remoto 
+## Imoportar Proyecto Propio
+
+Agregando el repositorio remoto en un repositorio local
 
 ```{{bash}}
 git remote add origin https://github.com/PPaccioretti/Taller_IG_Git_GitHub.git
@@ -302,28 +471,59 @@ git branch -M main
 git push -u origin main
 ```
 
+## Trabajo colaborativo 
+
+- Clonar proyecto forkeado
+
 ```{{bash}}
 git clone https://github.com/veroandreo/Taller_IG_Git_GitHub.git
 cd Taller_IG_Git_GitHub
-ls
 ```
+
+- Agregar un repositorio remoto al proyecto
 
 ```{{bash}}
 git remote add upstream https://github.com/PPaccioretti/Taller_IG_Git_GitHub.git
 git remote -v
 ```
 
-```{{bash}}
-$ git remote -v
+```
 origin  https://github.com/veroandreo/Taller_IG_Git_GitHub.git (fetch)
 origin  https://github.com/veroandreo/Taller_IG_Git_GitHub.git (push)
 upstream  https://github.com/PPaccioretti/Taller_IG_Git_GitHub.git (fetch)
 upstream  https://github.com/PPaccioretti/Taller_IG_Git_GitHub.git (push)
 ```
 
+## Descargando cambios
 
-```{{bash}}
+```{.bash}
 $ git pull
+```
+
+```{.bash}
+remote: Enumerating objects: 11, done.
+remote: Counting objects: 100% (11/11), done.
+remote: Compressing objects: 100% (5/5), done.
+remote: Total 5 (delta 3), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (5/5), 1.41 KiB | 62.00 KiB/s, done.
+From https://github.com/PPaccioretti/Taller_IG_Git_GitHub
+   29e253f..23b8f56  main       -> origin/main
+Updating 29e253f..23b8f56
+Fast-forward
+ .github/workflows/publish.yml | 25 +++++++++++++++++++++++++
+ Presentacion.qmd              | 41 -----------------------------------------
+ _quarto.yml                   |  4 ++++
+ 3 files changed, 29 insertions(+), 41 deletions(-)
+ create mode 100644 .github/workflows/publish.yml
+```
+
+## Descargando cambios - error
+
+```{.bash}
+$ git pull
+```
+
+```{.bash code-line-numbers="8-12"}
 remote: Enumerating objects: 10, done.
 remote: Counting objects: 100% (10/10), done.
 remote: Compressing objects: 100% (2/2), done.
@@ -339,21 +539,9 @@ Aborting
 Updating 93c8128..845dc10
 ```
 
-#
 
----
+<!-- ## Material de consulta
 
+https://kinsta.com/knowledgebase/git-vs-github/
 
-```{{r}}
-suma(3,5)
-```
-
- ---
-
-:::: {.miclase}
-
-![](https://ig.conae.unc.edu.ar/wp-content/uploads/sites/68/2022/04/G-UNC-CONAE-C.png)
-
-::::
-
----
+https://www.slideshare.net/bcbbslides/introduction-to-git-and-github-72514916 -->
