@@ -169,17 +169,30 @@ git diff nombreArchivo.txt
 
 ## Otros comandos que podrían resultar útiles
 
+::::: {.columns}
+
+:::: {.column width="40%"}
 Eliminar archivos del repo
 
 ```{{bash}}
 git rm nombreArchivo.py
 ```
+::::
+:::: {.column width="60%"}
+::: {.callout-important}
+## Cuidado! 
+
+Esto también elimina el archivo del repositorio. 
+:::
+::::
+:::::
 
 Renombrar/Mover archivos
 
 ```{{bash}}
 git mv nombreArchivo.py OtroNombre.py
 ```
+
 
 ## Los comandos más usados
 
