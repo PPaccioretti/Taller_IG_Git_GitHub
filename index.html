@@ -93,7 +93,6 @@
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="Presentacion_files/libs/revealjs/dist/theme/quarto.css" id="theme">
-  <link rel="stylesheet" href="reveal.scss">
   <link href="Presentacion_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="Presentacion_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="Presentacion_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -384,6 +383,9 @@
       margin-right: 0; 
     }
   </style>
+  <script src="Presentacion_files/libs/quarto-diagram/mermaid.min.js"></script>
+  <script src="Presentacion_files/libs/quarto-diagram/mermaid-init.js"></script>
+  <link href="Presentacion_files/libs/quarto-diagram/mermaid.css" rel="stylesheet">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -400,7 +402,7 @@
 <section>
 <section id="git-y-github" class="title-slide slide level1 center" data-background-color="#1A428A" data-background-image="img/presentation_title.png" data-background-size="auto 100%" data-background-position="right" style="height: 100%;  display: flex; align-items: center; justify-content: left; z-index: 4;">
 <h1>Git y GitHub</h1>
-<p>… y un poquito de Quarto</p>
+<!-- ... y un poquito de Quarto -->
 <div style="height: 100%; display: flex; align-items: center; justify-content: left;">
 <div style="font-size: 1.5em; justify-content: 'center';">
 <p>Pablo Paccioretti</p>
@@ -432,6 +434,8 @@
 </section>
 <section id="outline" class="slide level2">
 <h2>Outline</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
 <ul>
 <li>Que es Git</li>
 <li>Git Workflow local
@@ -439,7 +443,10 @@
 <li>Crear un repositorio (<em>repo</em>)</li>
 <li>Agregar archivos, <em>commit</em></li>
 </ul></li>
-<li>Que es GitHub/GitLab/BitBucket….</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>Que es GitHub/ GitLab/BitBucket/…</li>
 <li>GitHub Workflow
 <ul>
 <li>Crear repo en GitHub</li>
@@ -447,6 +454,8 @@
 <li>Pull request</li>
 </ul></li>
 </ul>
+</div>
+</div>
 </section>
 <section id="qué-es-git" class="slide level2">
 <h2>Qué es Git?</h2>
@@ -458,13 +467,61 @@
 <li>Volver a versiones anteriores</li>
 </ul></li>
 </ul>
+</section>
+<section id="qué-es-un-repositorio" class="slide level2">
+<h2>¿Qué es un repositorio?</h2>
+<ul>
+<li>repo = repositorio = <em>repository</em></li>
+<li>Por lo general es utilizado para organizar un <em>único</em> proyecto</li>
+<li>Los repos pueden contener carpetas, archivos, imágenes, videos…</li>
+</ul>
+</section>
+<section id="git-workflow-local" class="slide level2">
+<h2>Git Workflow local</h2>
+<div class="columns">
+<div class="column" style="width:75%;">
+<ol class="example" type="1">
+<li>Iniciar un nuevo proyecto en una carpeta</li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a href="#cb1-1"></a>git init</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" class="example" type="1">
+<li>Agregar/Editar archivos</li>
+<li>Registrar cada cambio</li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a href="#cb2-1"></a>git add .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="4" class="example" type="1">
+<li>Confirmar cambio en el repositorio</li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb3-1"><a href="#cb3-1"></a>git commit -m "Un mensaje descriptivo y corto"</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="width:25%;">
+<div class="cell" data-reveal="true" data-fig-height="5">
+<div class="cell-output-display">
+<div>
+<p>
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-1">
+graph TD
+  A[Working] --&gt;|add| B(Staging index)
+  B --&gt; |commit| C(Repository)
+</pre>
+<div id="mermaid-tooltip-1" class="mermaidTooltip">
+
+</div>
+<p></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="tips-sobre-git" class="slide level2">
+<h2>Tips sobre Git</h2>
 <div class="callout callout-tip callout-style-simple">
 <div class="callout-body">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-content">
-<p>Para utilizar Git no es necesario contar con conexión a internet. Los desarrolladores pueden trabajar independientemente de manera local y luego combinar los cambios.</p>
+<p>Para utilizarlo no es necesario internet. Es posible trabajar manera local y luego cargar/combinar los cambios.</p>
 </div>
 </div>
 </div>
@@ -474,38 +531,13 @@
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Cuando debería usar Git?</strong></p>
+<p><strong>Cuando se debería usar Git?</strong></p>
 </div>
 <div class="callout-content">
-<p>Se debería utilizar principalmente para trabajar/editar archivos de texto. No se recomienda para imágenes, películas, música o archivos como pdf, doc, etc.</p>
+<p>Principalmente para trabajar/editar archivos de texto. No se recomienda para imágenes, películas, música o archivos como pdf, docx, etc.</p>
 </div>
 </div>
 </div>
-</section>
-<section id="qué-es-un-repositorio" class="slide level2">
-<h2>¿Qué es un repositorio?</h2>
-<ul>
-<li>repo = repositorio = <em>repository</em></li>
-<li>Por lo general es utilizado para organizar un <em>único</em> proyecto</li>
-<li>Los repos pueden contener carpetas, archivos, imágenes, videos….</li>
-</ul>
-</section>
-<section id="git-workflow-local" class="slide level2">
-<h2>Git Workflow local</h2>
-<ol class="example" type="1">
-<li>Iniciar un nuevo proyecto en una carpeta</li>
-</ol>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a href="#cb1-1"></a>git init</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol start="2" class="example" type="1">
-<li>Agregar archivos usando un editor de texto</li>
-<li>Agregar cada cambio que se hizo en la carpeta</li>
-</ol>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a href="#cb2-1"></a>git add .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol start="4" class="example" type="1">
-<li>Commit el cambio en el repositorio</li>
-</ol>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb3-1"><a href="#cb3-1"></a>git commit -m "Un mensaje descriptivo y corto"</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Hacer cambios - Working add Agregar cambios - Staging index commit Commit cambios - Repositorio</p>
 <div class="callout callout-tip callout-captioned callout-style-default">
 <div class="callout-body">
 <div class="callout-caption">
@@ -515,27 +547,32 @@
 <p><strong>Como deberían ser los mensajes de cada commit</strong></p>
 </div>
 <div class="callout-content">
-<p>Cada mensaje debería explicar lo que hace (en presente). Debería ser una oración corta (<span class="math inline">\(\le 72\)</span> caracteres), que describa y resuma los cambios que se realizaron.</p>
+<p>Mediante una oración corta e informativa (<span class="math inline">\(\le 72\)</span> caracteres), se debería describir y resumir los cambios que se realizaron.</p>
 </div>
 </div>
 </div>
 </section>
 <section id="revisando-los-cambios" class="slide level2">
 <h2>Revisando los cambios</h2>
-<h3 id="cómo-ver-qué-se-modificó">Cómo ver qué se modificó?</h3>
+<ul>
+<li>Cómo ver que se estuvo modificando?</li>
+</ul>
 <div class="sourceCode" id="cb4"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a href="#cb4-1"></a>git log</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<h3 id="cómo-ver-qué-se-está-modificando">Cómo ver qué se está modificando?</h3>
+<ul>
+<li>Cómo ver que archivos se están modificando?</li>
+</ul>
 <div class="sourceCode" id="cb5"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb5-1"><a href="#cb5-1"></a>git status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<h3 id="cómo-ver-qué-cambió">Cómo ver qué cambió?</h3>
+<ul>
+<li>Cómo ver qué cambió de cada archivo?</li>
+</ul>
 <div class="sourceCode" id="cb6"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb6-1"><a href="#cb6-1"></a>git diff</span>
-<span id="cb6-2"><a href="#cb6-2"></a>git diff nombreArchivo.txt</span>
-<span id="cb6-3"><a href="#cb6-3"></a>git diff --staged</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-2"><a href="#cb6-2"></a>git diff nombreArchivo.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="otros-comandos-que-podrían-resultar-útiles" class="slide level2">
 <h2>Otros comandos que podrían resultar útiles</h2>
-<p>Eliminar arhicos del repo</p>
+<p>Eliminar archivos del repo</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb7-1"><a href="#cb7-1"></a>git rm nombreArchivo.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Renpombrar/Mover archivos</p>
+<p>Renombrar/Mover archivos</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb8-1"><a href="#cb8-1"></a>git mv nombreArchivo.py OtroNombre.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="los-comandos-más-usados" class="slide level2">
@@ -549,67 +586,82 @@
 <span id="cb9-7"><a href="#cb9-7"></a>git rm</span>
 <span id="cb9-8"><a href="#cb9-8"></a>git mv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="volviendo-en-el-tiempo" class="slide level2">
-<h2>Volviendo en el tiempo</h2>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb10-1"><a href="#cb10-1"></a>git checkout archivo</span>
-<span id="cb10-2"><a href="#cb10-2"></a>git checkout branch</span>
-<span id="cb10-3"><a href="#cb10-3"></a>git checkout commitID</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Deshacer cambios hechos <em>antes</em> de hacer el commit. Staging area</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb11-1"><a href="#cb11-1"></a>git reset HEAD nombreArchivo.r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Deshacer cambios hechos <em>luego</em> de hacer el commit. Repository</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb12-1"><a href="#cb12-1"></a>git commit --ammend -m "bla bla"</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
 <section id="ramasbranch" class="slide level2">
 <h2>Ramas/Branch</h2>
 <ul>
-<li><p>Permiten probar nuevos cambios.</p></li>
-<li><p>Si un cambio no funcionó, se puede eliminar la rama sin necesidad de deshacer cambios en la rama principal</p></li>
-<li><p>Si un cambio funcionó, se puede commbinar (merge) a la rama principal</p></li>
-<li><p>Siempre se utiliza el mismo directorio de trabajo</p></li>
-<li><p>En que Rama <em>branch</em> estoy?</p></li>
+<li>Permiten probar nuevos cambios</li>
+<li>Si un cambio no funcionó, se puede eliminar la rama sin necesidad de deshacer cambios en la rama principal</li>
+<li>Si un cambio funcionó, se puede combinar (merge) a la rama principal</li>
+<li>Siempre se utiliza el mismo directorio de trabajo</li>
 </ul>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb13-1"><a href="#cb13-1"></a>git branch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section class="slide level2">
+
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>En que Rama <em>branch</em> estoy?</li>
+</ul>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb10-1"><a href="#cb10-1"></a>git branch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Cómo creo una rama?</li>
 </ul>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb14-1"><a href="#cb14-1"></a>git branch nueva_rama</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb11-1"><a href="#cb11-1"></a>git branch nueva_rama</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Cómo cambio entre ramas?</li>
 </ul>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb15-1"><a href="#cb15-1"></a>git checkout nueva_rama</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout callout-tip callout-style-simple">
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb12-1"><a href="#cb12-1"></a>git checkout nueva_rama</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>Cómo creo y cambio a la nueva rama?</li>
+</ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb13-1"><a href="#cb13-1"></a>git checkout -b nueva_rama</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Como veo las diferencias entre ramas?</li>
+</ul>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb14-1"><a href="#cb14-1"></a>git diff una_rama..otra_rama</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="callout callout-tip callout-captioned callout-style-default">
 <div class="callout-body">
+<div class="callout-caption">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
+<p><strong>Algunos tips</strong></p>
+</div>
 <div class="callout-content">
-<p>Se puede cambiar entre ramas y realizar commits. Cada rama está separada de las otras ramas.</p>
-<p>Antes de cambiar entre ramas, el directorio de trabajo debería estar sin conflictos.</p>
-</div>
-</div>
-</div>
 <ul>
-<li>Como veo las diferencias ramas?</li>
+<li><p>Se puede cambiar entre ramas y realizar commits.</p></li>
+<li><p>Cada rama está separada y es independiente de las otras ramas.</p></li>
+<li><p>Antes de cambiar entre ramas, el directorio de trabajo debería estar sin conflictos ni cambios no confirmados (<em>commiteados</em>).</p></li>
 </ul>
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb16-1"><a href="#cb16-1"></a>git diff una_rama..otra_rama</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
 </section>
-<section id="cómo-se-combinan-las-ramas" class="slide level2">
-<h2>Cómo se combinan las ramas?</h2>
+<section id="cómo-se-combinan-ramas" class="slide level2">
+<h2>Cómo se combinan ramas?</h2>
 <p>Desde la rama desde la cual se quiere unir la otra rama</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb17-1"><a href="#cb17-1"></a>git merge la_otra_rama</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb15-1"><a href="#cb15-1"></a>git merge la_otra_rama</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="conflictos-cuando-se-combinan" class="slide level2">
 <h2>Conflictos cuando se combinan</h2>
 <ul>
-<li>Se dan cuando dos commits tienen cambios en la misma linea.</li>
-<li>Git identificará los conflictos pero no lo solucionará</li>
+<li>Se dan cuando dos commits tienen cambios en la misma línea de código.</li>
+<li>Git identificará los conflictos pero no los solucionará</li>
 </ul>
 <p>Alternativas:</p>
 <ul>
 <li>Abortar el merge <code>git merge --abort</code></li>
 <li>Arreglar manualmente los conflictos</li>
 </ul>
-<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb18-1"><a href="#cb18-1"></a>git log  --graph --oneline --all --decorate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section class="slide level2">
+
 <div class="callout callout-tip callout-captioned callout-style-default">
 <div class="callout-body">
 <div class="callout-caption">
@@ -620,119 +672,206 @@
 </div>
 <div class="callout-content">
 <ul>
-<li>Combinar (merge) seguido</li>
-<li>Mantener cada commit simple y enfocado a determinados cambios/solucies/</li>
-<li>Combinar lo que sucede y en la rama en master de manera frecuente.</li>
+<li>Combinar los trabajos en la rama de manera frecuente</li>
+<li>Mantener cada commit simple y enfocado a determinados cambios/soluciones</li>
+<li>Combinar lo que sucede en la rama en master de manera frecuente.</li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb16-1"><a href="#cb16-1"></a>git log  --graph --oneline --all --decorate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="volviendo-en-el-tiempo" class="slide level2">
+<h2>Volviendo en el tiempo</h2>
+<p>Podemos ver los cambios que se estuvieron realizando y volver a versiones anteriores que ya fueron confirmadas (<em>commiteadas</em>)</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb17-1"><a href="#cb17-1"></a>git checkout archivo</span>
+<span id="cb17-2"><a href="#cb17-2"></a>git checkout branch</span>
+<span id="cb17-3"><a href="#cb17-3"></a>git checkout commitID</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="columns">
+<div class="column">
+<p>Deshacer cambios hechos <em>antes</em> de hacer el commit.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb18-1"><a href="#cb18-1"></a>git reset HEAD nombreArchivo.r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div style="color: grey; text-align: center; font-size: 0.8em;">
+<p>Staging area</p>
+</div>
+</div><div class="column">
+<p>Deshacer cambios hechos <em>luego</em> de hacer el commit.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb19-1"><a href="#cb19-1"></a>git commit --ammend -m "bla bla"</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div style="color: grey; text-align: center; font-size: 0.8em;">
+<p>Repository</p>
 </div>
 </div>
 </div>
 </section>
 <section id="qué-es-github" class="slide level2">
 <h2>Qué es GitHub?</h2>
-<p>https://kinsta.com/knowledgebase/git-vs-github/</p>
-<p>GitHub makes it easier to collaborate using git. It’s a platform that can hold repositories of code in cloud-based storage.</p>
-<p>https://www.slideshare.net/bcbbslides/introduction-to-git-and-github-72514916</p>
+<p>GitHub ayuda a colaborar entre usuarios usando git.</p>
+<p>Es una plataforma que contiene repositorios almacenados en la nube, diferentes desarrolladores pueden trabajar en un único proyecto y ver los cambios realizados.</p>
 </section>
-<section id="codigos-ejecutados" class="slide level2">
-<h2>Codigos ejecutados</h2>
-<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb19-1"><a href="#cb19-1"></a>py -m pip install jupyter #sudo</span>
-<span id="cb19-2"><a href="#cb19-2"></a></span>
-<span id="cb19-3"><a href="#cb19-3"></a>git init .</span>
-<span id="cb19-4"><a href="#cb19-4"></a>curl -o .gitignore --fail --show-error --silent --location https://raw.github.com/github/gitignore/master/R.gitignore</span>
-<span id="cb19-5"><a href="#cb19-5"></a># curl -o .gitignore --fail --show-error --silent --location https://raw.github.com/github/gitignore/master/Python.gitignore</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section class="slide level2">
+
+<div class="columns">
+<div class="column">
+<h5 id="git">Git</h5>
+<ul>
+<li>Git es un software para control de versiones. Permite a los desarrolladores registrar los cambios de los proyectos.</li>
+</ul>
+</div><div class="column">
+<h5 id="github">GitHub</h5>
+<ul>
+<li>GitHub es una plataforma web que incorpora características de git para que puedan ser usadas de manera colaborativa.</li>
+</ul>
+</div>
+</div>
 </section>
-<section id="imoportar-proyecto" class="slide level2">
-<h2>Imoportar Proyecto</h2>
-<p>Creando un repositorio local nuevo</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb20-1"><a href="#cb20-1"></a>echo "# Taller_IG_Git_GitHub" &gt;&gt; README.md</span>
-<span id="cb20-2"><a href="#cb20-2"></a>git init</span>
-<span id="cb20-3"><a href="#cb20-3"></a>git add README.md</span>
-<span id="cb20-4"><a href="#cb20-4"></a>git commit -m "first commit"</span>
-<span id="cb20-5"><a href="#cb20-5"></a>git branch -M main</span>
-<span id="cb20-6"><a href="#cb20-6"></a>git remote add origin https://github.com/PPaccioretti/Taller_IG_Git_GitHub.git</span>
-<span id="cb20-7"><a href="#cb20-7"></a>git push -u origin main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="agregando-el-repositorio-remoto" class="slide level2">
-<h2>Agregando el repositorio remoto</h2>
-<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb21-1"><a href="#cb21-1"></a>git remote add origin https://github.com/PPaccioretti/Taller_IG_Git_GitHub.git</span>
-<span id="cb21-2"><a href="#cb21-2"></a>git branch -M main</span>
-<span id="cb21-3"><a href="#cb21-3"></a>git push -u origin main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb22-1"><a href="#cb22-1"></a>git clone https://github.com/veroandreo/Taller_IG_Git_GitHub.git</span>
-<span id="cb22-2"><a href="#cb22-2"></a>cd Taller_IG_Git_GitHub</span>
-<span id="cb22-3"><a href="#cb22-3"></a>ls</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb23-1"><a href="#cb23-1"></a>git remote add upstream https://github.com/PPaccioretti/Taller_IG_Git_GitHub.git</span>
-<span id="cb23-2"><a href="#cb23-2"></a>git remote -v</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb24-1"><a href="#cb24-1"></a>$ git remote -v</span>
-<span id="cb24-2"><a href="#cb24-2"></a>origin  https://github.com/veroandreo/Taller_IG_Git_GitHub.git (fetch)</span>
-<span id="cb24-3"><a href="#cb24-3"></a>origin  https://github.com/veroandreo/Taller_IG_Git_GitHub.git (push)</span>
-<span id="cb24-4"><a href="#cb24-4"></a>upstream  https://github.com/PPaccioretti/Taller_IG_Git_GitHub.git (fetch)</span>
-<span id="cb24-5"><a href="#cb24-5"></a>upstream  https://github.com/PPaccioretti/Taller_IG_Git_GitHub.git (push)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb25-1"><a href="#cb25-1"></a>$ git pull</span>
-<span id="cb25-2"><a href="#cb25-2"></a>remote: Enumerating objects: 10, done.</span>
-<span id="cb25-3"><a href="#cb25-3"></a>remote: Counting objects: 100% (10/10), done.</span>
-<span id="cb25-4"><a href="#cb25-4"></a>remote: Compressing objects: 100% (2/2), done.</span>
-<span id="cb25-5"><a href="#cb25-5"></a>remote: Total 6 (delta 3), reused 5 (delta 3), pack-reused 0</span>
-<span id="cb25-6"><a href="#cb25-6"></a>Unpacking objects: 100% (6/6), 1.18 KiB | 37.00 KiB/s, done.</span>
-<span id="cb25-7"><a href="#cb25-7"></a>From https://github.com/PPaccioretti/Taller_IG_Git_GitHub</span>
-<span id="cb25-8"><a href="#cb25-8"></a>   93c8128..845dc10  main       -&gt; origin/main</span>
-<span id="cb25-9"><a href="#cb25-9"></a>error: Your local changes to the following files would be overwritten by merge:</span>
-<span id="cb25-10"><a href="#cb25-10"></a>        .gitignore</span>
-<span id="cb25-11"><a href="#cb25-11"></a>        Presentacion.qmd</span>
-<span id="cb25-12"><a href="#cb25-12"></a>Please commit your changes or stash them before you merge.</span>
-<span id="cb25-13"><a href="#cb25-13"></a>Aborting</span>
-<span id="cb25-14"><a href="#cb25-14"></a>Updating 93c8128..845dc10</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>4</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1]  1.0483522  0.3573020 -0.4039152</code></pre>
-</div>
-</div>
+<section id="principales-acciones-en-github" class="slide level2">
+<h2>Principales acciones en GitHub</h2>
+<dl>
+<dt>Fork</dt>
+<dd>
+El proceso de copiar el repositorio de otro desarrollador para poder modificarlo.
+</dd>
+<dt>Pull</dt>
+<dd>
+Una vez que se realizan los cambios, se pueden sugerir mendiante <em>pull request</em>
+</dd>
+<dt>Merge</dt>
+<dd>
+El dueño del repositorio puede combinar los cambios
+</dd>
+</dl>
 </section></section>
 <section>
-<section id="section-1" class="title-slide slide level1 center">
-<h1></h1>
+<section id="aplicación-en-github" class="title-slide slide level1 center" data-background-color="#1A428A">
+<h1>Aplicación en GitHub</h1>
 
 </section>
 <section class="slide level2">
 
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>4</code></pre>
-</div>
-</div>
-<div class="cell">
 
-</div>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>6</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] -2.100598  1.362597</code></pre>
-</div>
-</div>
-<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource {{r}} number-lines code-with-copy"><code class="sourceCode"><span id="cb31-1"><a href="#cb31-1"></a>suma(3,5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell">
-<div class="cell-output cell-output-error">
-<pre><code>Error in suma(3, 5): no se pudo encontrar la función "suma"</code></pre>
-</div>
-</div>
-</section>
+<img data-src="img/Creacion_Repo_GitHub.png" class="r-stretch quarto-figure-center"></section>
 <section class="slide level2">
 
-<div class="miclase">
-<p><img data-src="https://ig.conae.unc.edu.ar/wp-content/uploads/sites/68/2022/04/G-UNC-CONAE-C.png"></p>
-</div>
-</section>
+
+<img data-src="img/Importar_Repo_GitHub.png" class="r-stretch quarto-figure-center"></section>
 <section class="slide level2">
 
+
+<img data-src="img/Importado_Repo_GitHub.png" class="r-stretch quarto-figure-center"></section>
+<section class="slide level2">
+
+
+<img data-src="img/fork_1.png" class="r-stretch quarto-figure-center"></section>
+<section class="slide level2">
+
+
+<img data-src="img/fork_created.png" class="r-stretch quarto-figure-center"></section>
+<section class="slide level2">
+
+
+<img data-src="img/clone_fork_https.png" class="r-stretch quarto-figure-center"></section>
+<section class="slide level2">
+
+
+<img data-src="img/git_clone_repo_terminal.png" class="r-stretch quarto-figure-center"></section>
+<section class="slide level2">
+
+
+<img data-src="img/create_fork.png" class="r-stretch quarto-figure-center"></section>
+<section class="slide level2">
+
+
+<img data-src="img/add_upstream.png" class="r-stretch quarto-figure-center"></section>
+<section class="slide level2">
+
+
+<img data-src="img/merge_pull_request.png" class="r-stretch quarto-figure-center"></section>
+<section class="slide level2">
+
+
+<img data-src="img/merged_pr.png" class="r-stretch quarto-figure-center"></section>
+<section id="codigos-ejecutados" class="slide level2">
+<h2>Codigos ejecutados</h2>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb20-1"><a href="#cb20-1"></a>py -m pip install jupyter #sudo</span>
+<span id="cb20-2"><a href="#cb20-2"></a></span>
+<span id="cb20-3"><a href="#cb20-3"></a>git init .</span>
+<span id="cb20-4"><a href="#cb20-4"></a>curl -o .gitignore --fail --show-error --silent --location https://raw.github.com/github/gitignore/master/R.gitignore</span>
+<span id="cb20-5"><a href="#cb20-5"></a># curl -o .gitignore --fail --show-error --silent --location https://raw.github.com/github/gitignore/master/Python.gitignore</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="imoportar-proyecto-propio" class="slide level2">
+<h2>Imoportar Proyecto Propio</h2>
+<p>Creando un repositorio local nuevo</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb21-1"><a href="#cb21-1"></a>echo "# Taller_IG_Git_GitHub" &gt;&gt; README.md</span>
+<span id="cb21-2"><a href="#cb21-2"></a>git init</span>
+<span id="cb21-3"><a href="#cb21-3"></a>git add README.md</span>
+<span id="cb21-4"><a href="#cb21-4"></a>git commit -m "first commit"</span>
+<span id="cb21-5"><a href="#cb21-5"></a>git branch -M main</span>
+<span id="cb21-6"><a href="#cb21-6"></a>git remote add origin https://github.com/PPaccioretti/Taller_IG_Git_GitHub.git</span>
+<span id="cb21-7"><a href="#cb21-7"></a>git push -u origin main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="imoportar-proyecto-propio-1" class="slide level2">
+<h2>Imoportar Proyecto Propio</h2>
+<p>Agregando el repositorio remoto en un repositorio local</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb22-1"><a href="#cb22-1"></a>git remote add origin https://github.com/PPaccioretti/Taller_IG_Git_GitHub.git</span>
+<span id="cb22-2"><a href="#cb22-2"></a>git branch -M main</span>
+<span id="cb22-3"><a href="#cb22-3"></a>git push -u origin main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="trabajo-colaborativo" class="slide level2">
+<h2>Trabajo colaborativo</h2>
+<ul>
+<li>Clonar proyecto forkeado</li>
+</ul>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb23-1"><a href="#cb23-1"></a>git clone https://github.com/veroandreo/Taller_IG_Git_GitHub.git</span>
+<span id="cb23-2"><a href="#cb23-2"></a>cd Taller_IG_Git_GitHub</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Agregar un repositorio remoto al proyecto</li>
+</ul>
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource {{bash}} number-lines code-with-copy"><code class="sourceCode"><span id="cb24-1"><a href="#cb24-1"></a>git remote add upstream https://github.com/PPaccioretti/Taller_IG_Git_GitHub.git</span>
+<span id="cb24-2"><a href="#cb24-2"></a>git remote -v</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>origin  https://github.com/veroandreo/Taller_IG_Git_GitHub.git (fetch)
+origin  https://github.com/veroandreo/Taller_IG_Git_GitHub.git (push)
+upstream  https://github.com/PPaccioretti/Taller_IG_Git_GitHub.git (fetch)
+upstream  https://github.com/PPaccioretti/Taller_IG_Git_GitHub.git (push)</code></pre>
+</section>
+<section id="descargando-cambios" class="slide level2">
+<h2>Descargando cambios</h2>
+<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1"></a><span class="ex">$</span> git pull</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1"></a><span class="ex">remote:</span> Enumerating objects: 11, done.</span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="ex">remote:</span> Counting objects: 100% <span class="er">(</span><span class="ex">11/11</span><span class="kw">)</span><span class="ex">,</span> done.</span>
+<span id="cb27-3"><a href="#cb27-3"></a><span class="ex">remote:</span> Compressing objects: 100% <span class="er">(</span><span class="ex">5/5</span><span class="kw">)</span><span class="ex">,</span> done.</span>
+<span id="cb27-4"><a href="#cb27-4"></a><span class="ex">remote:</span> Total 5 <span class="er">(</span><span class="ex">delta</span> 3<span class="kw">)</span><span class="ex">,</span> reused 0 <span class="er">(</span><span class="ex">delta</span> 0<span class="kw">)</span><span class="ex">,</span> pack-reused 0</span>
+<span id="cb27-5"><a href="#cb27-5"></a><span class="ex">Unpacking</span> objects: 100% <span class="er">(</span><span class="ex">5/5</span><span class="kw">)</span><span class="ex">,</span> 1.41 KiB <span class="kw">|</span> <span class="ex">62.00</span> KiB/s, done.</span>
+<span id="cb27-6"><a href="#cb27-6"></a><span class="ex">From</span> https://github.com/PPaccioretti/Taller_IG_Git_GitHub</span>
+<span id="cb27-7"><a href="#cb27-7"></a>   <span class="ex">29e253f..23b8f56</span>  main       <span class="at">-</span><span class="op">&gt;</span> origin/main</span>
+<span id="cb27-8"><a href="#cb27-8"></a><span class="ex">Updating</span> 29e253f..23b8f56</span>
+<span id="cb27-9"><a href="#cb27-9"></a><span class="ex">Fast-forward</span></span>
+<span id="cb27-10"><a href="#cb27-10"></a> <span class="ex">.github/workflows/publish.yml</span> <span class="kw">|</span> <span class="ex">25</span> +++++++++++++++++++++++++</span>
+<span id="cb27-11"><a href="#cb27-11"></a> <span class="ex">Presentacion.qmd</span>              <span class="kw">|</span> <span class="ex">41</span> <span class="at">-----------------------------------------</span></span>
+<span id="cb27-12"><a href="#cb27-12"></a> <span class="ex">_quarto.yml</span>                   <span class="kw">|</span>  <span class="ex">4</span> ++++</span>
+<span id="cb27-13"><a href="#cb27-13"></a> <span class="ex">3</span> files changed, 29 insertions<span class="er">(</span><span class="ex">+</span><span class="kw">)</span><span class="ex">,</span> 41 deletions<span class="er">(</span><span class="ex">-</span><span class="kw">)</span></span>
+<span id="cb27-14"><a href="#cb27-14"></a> <span class="ex">create</span> mode 100644 .github/workflows/publish.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="descargando-cambios---error" class="slide level2">
+<h2>Descargando cambios - error</h2>
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1"></a><span class="ex">$</span> git pull</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29" data-code-line-numbers="8-12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1"></a><span class="ex">remote:</span> Enumerating objects: 10, done.</span>
+<span id="cb29-2"><a href="#cb29-2"></a><span class="ex">remote:</span> Counting objects: 100% <span class="er">(</span><span class="ex">10/10</span><span class="kw">)</span><span class="ex">,</span> done.</span>
+<span id="cb29-3"><a href="#cb29-3"></a><span class="ex">remote:</span> Compressing objects: 100% <span class="er">(</span><span class="ex">2/2</span><span class="kw">)</span><span class="ex">,</span> done.</span>
+<span id="cb29-4"><a href="#cb29-4"></a><span class="ex">remote:</span> Total 6 <span class="er">(</span><span class="ex">delta</span> 3<span class="kw">)</span><span class="ex">,</span> reused 5 <span class="er">(</span><span class="ex">delta</span> 3<span class="kw">)</span><span class="ex">,</span> pack-reused 0</span>
+<span id="cb29-5"><a href="#cb29-5"></a><span class="ex">Unpacking</span> objects: 100% <span class="er">(</span><span class="ex">6/6</span><span class="kw">)</span><span class="ex">,</span> 1.18 KiB <span class="kw">|</span> <span class="ex">37.00</span> KiB/s, done.</span>
+<span id="cb29-6"><a href="#cb29-6"></a><span class="ex">From</span> https://github.com/PPaccioretti/Taller_IG_Git_GitHub</span>
+<span id="cb29-7"><a href="#cb29-7"></a>   <span class="ex">93c8128..845dc10</span>  main       <span class="at">-</span><span class="op">&gt;</span> origin/main</span>
+<span id="cb29-8"><a href="#cb29-8"></a><span class="ex">error:</span> Your local changes to the following files would be overwritten by merge:</span>
+<span id="cb29-9"><a href="#cb29-9"></a>        <span class="ex">.gitignore</span></span>
+<span id="cb29-10"><a href="#cb29-10"></a>        <span class="ex">Presentacion.qmd</span></span>
+<span id="cb29-11"><a href="#cb29-11"></a><span class="ex">Please</span> commit your changes or stash them before you merge.</span>
+<span id="cb29-12"><a href="#cb29-12"></a><span class="ex">Aborting</span></span>
+<span id="cb29-13"><a href="#cb29-13"></a><span class="ex">Updating</span> 93c8128..845dc10</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<!-- ## Material de consulta
+
+https://kinsta.com/knowledgebase/git-vs-github/
+
+https://www.slideshare.net/bcbbslides/introduction-to-git-and-github-72514916 -->
 
 <img src="https://ig.conae.unc.edu.ar/wp-content/uploads/sites/68/2022/04/G-UNC-CONAE-C.png" class="slide-logo r-stretch"><div class="footer footer-default">
 
@@ -951,44 +1090,6 @@
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
