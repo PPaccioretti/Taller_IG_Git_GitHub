@@ -21,7 +21,7 @@ output-file: index.html
 
 # Git y GitHub {background-color="#1A428A" background-image="img/presentation_title.png" background-size="auto 100%" background-position="right" style="height: 100%;  display: flex; align-items: center; justify-content: left; z-index: 4;" } 
 
-... y un poquito de Quarto
+<!-- ... y un poquito de Quarto -->
 
 
 :::: {style="height: 100%; display: flex; align-items: center; justify-content: left;"} 
@@ -411,15 +411,6 @@ Merge
 
 ---
 
-
-
-
-
-
-https://kinsta.com/knowledgebase/git-vs-github/
-
-https://www.slideshare.net/bcbbslides/introduction-to-git-and-github-72514916
-
 ## Codigos ejecutados
 
 
@@ -429,9 +420,10 @@ py -m pip install jupyter #sudo
 git init .
 curl -o .gitignore --fail --show-error --silent --location https://raw.github.com/github/gitignore/master/R.gitignore
 # curl -o .gitignore --fail --show-error --silent --location https://raw.github.com/github/gitignore/master/Python.gitignore
-
 ```
-## Imoportar Proyecto
+
+
+## Imoportar Proyecto Propio
 
 Creando un repositorio local nuevo
 
@@ -445,7 +437,9 @@ git remote add origin https://github.com/PPaccioretti/Taller_IG_Git_GitHub.git
 git push -u origin main
 ```
 
-## Agregando el repositorio remoto 
+## Imoportar Proyecto Propio
+
+Agregando el repositorio remoto en un repositorio local
 
 ```{{bash}}
 git remote add origin https://github.com/PPaccioretti/Taller_IG_Git_GitHub.git
@@ -453,28 +447,59 @@ git branch -M main
 git push -u origin main
 ```
 
+## Trabajo colaborativo 
+
+- Clonar proyecto forkeado
+
 ```{{bash}}
 git clone https://github.com/veroandreo/Taller_IG_Git_GitHub.git
 cd Taller_IG_Git_GitHub
-ls
 ```
+
+- Agregar un repositorio remoto al proyecto
 
 ```{{bash}}
 git remote add upstream https://github.com/PPaccioretti/Taller_IG_Git_GitHub.git
 git remote -v
 ```
 
-```{{bash}}
-$ git remote -v
+```
 origin  https://github.com/veroandreo/Taller_IG_Git_GitHub.git (fetch)
 origin  https://github.com/veroandreo/Taller_IG_Git_GitHub.git (push)
 upstream  https://github.com/PPaccioretti/Taller_IG_Git_GitHub.git (fetch)
 upstream  https://github.com/PPaccioretti/Taller_IG_Git_GitHub.git (push)
 ```
 
+## Descargando cambios
 
-```{{bash}}
+```{.bash}
 $ git pull
+```
+
+```{.bash}
+remote: Enumerating objects: 11, done.
+remote: Counting objects: 100% (11/11), done.
+remote: Compressing objects: 100% (5/5), done.
+remote: Total 5 (delta 3), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (5/5), 1.41 KiB | 62.00 KiB/s, done.
+From https://github.com/PPaccioretti/Taller_IG_Git_GitHub
+   29e253f..23b8f56  main       -> origin/main
+Updating 29e253f..23b8f56
+Fast-forward
+ .github/workflows/publish.yml | 25 +++++++++++++++++++++++++
+ Presentacion.qmd              | 41 -----------------------------------------
+ _quarto.yml                   |  4 ++++
+ 3 files changed, 29 insertions(+), 41 deletions(-)
+ create mode 100644 .github/workflows/publish.yml
+```
+
+## Descargando cambios - error
+
+```{.bash}
+$ git pull
+```
+
+```{.bash code-line-numbers="8-12"}
 remote: Enumerating objects: 10, done.
 remote: Counting objects: 100% (10/10), done.
 remote: Compressing objects: 100% (2/2), done.
@@ -490,21 +515,9 @@ Aborting
 Updating 93c8128..845dc10
 ```
 
-#
 
----
+<!-- ## Material de consulta
 
+https://kinsta.com/knowledgebase/git-vs-github/
 
-```{{r}}
-suma(3,5)
-```
-
- ---
-
-:::: {.miclase}
-
-![](https://ig.conae.unc.edu.ar/wp-content/uploads/sites/68/2022/04/G-UNC-CONAE-C.png)
-
-::::
-
----
+https://www.slideshare.net/bcbbslides/introduction-to-git-and-github-72514916 -->
