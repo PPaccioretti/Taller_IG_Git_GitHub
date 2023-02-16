@@ -446,7 +446,7 @@ curl -o .gitignore --fail --show-error --silent --location https://raw.github.co
 # curl -o .gitignore --fail --show-error --silent --location https://raw.github.com/github/gitignore/master/Python.gitignore
 ```
 
-## Imoportar Proyecto Propio
+## Importar Proyecto Propio
 
 
 Creando un repositorio local nuevo
