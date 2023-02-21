@@ -75,7 +75,8 @@ Quarto puede usarse con: VSCode, RStudio, Jupyter, Neovim, otros editores de tex
 
 ::::
 
-# ![](https://git-scm.com/images/logos/downloads/Git-Logo-2Color.svg){width="600px"}
+# {background-color="#1A428A" background-image="https://git-scm.com/images/logos/downloads/Git-Logo-2Color.svg"  background-size="60% auto" style="z-index: 4;"}
+
 
 
 ## Qué es `git`?
@@ -328,7 +329,8 @@ Repository
 
 ::::
 
-# ![](https://miro.medium.com/max/1400/0*ZLfPdBuEy3SgJscw.jpg)
+
+# {background-image="https://miro.medium.com/max/1200/1*dDNpLKu_oTLzStsDTnkJ-g.png" background-color="#1A428A" background-size="60% auto" style="z-index: 4;"}
 
 
 ## Qué es GitHub? 
@@ -358,9 +360,6 @@ Repository
 
 ## GitHub workflow
 
-![](https://learning.nceas.ucsb.edu/2020-02-RRCourse/images/github-workflows-fork.png){.r-stretch fig-align="center"}
-
-
 ### Principales acciones en GitHub
 
 ::: {style="font-size: calc(0.61em + 0.5vmin);"}
@@ -384,12 +383,12 @@ Merge
 
 # Workflows en GitHub {background-color="#1A428A"}
 
+::: {style="font-size: 2.2em; color: #e81f76"}
+ Proyecto propio 
+:::
 
 ---
 
-## Proyecto propio
-
----
 
 a. Crear un repo remoto y luego clonarlo
 
@@ -435,7 +434,11 @@ git pull
 
 ---
 
-## Proyecto colaborativo
+# Workflows en GitHub {background-color="#1A428A"}
+
+::: {style="font-size: 2.2em; color: #e81f76"}
+ Proyecto colaborativo
+:::
 
 ---
 
@@ -510,15 +513,17 @@ Click en el link... y...
 Creamos el *pull request*
 
 ![](img/merge_pull_request.png){.r-stretch fig-align="center"}
+
 ---
 
 Una vez creado el PR, se pueden seguir haciendo commits desde la 
 *feature branch* al PR
 
 ![](img/commits_to_pr.png)
+
 ---
 
-![](commits_to_pr_github.png)
+![](img/commits_to_pr_github.png)
 
 ---
 
