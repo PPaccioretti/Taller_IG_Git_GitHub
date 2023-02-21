@@ -507,6 +507,15 @@ Click en el link... y...
 Creamos el *pull request*
 
 ![](img/merge_pull_request.png){.r-stretch fig-align="center"}
+---
+
+Una vez creado el PR, se pueden seguir haciendo commits desde la 
+*feature branch* al PR
+
+![](img/commits_to _pr.png)
+---
+
+![](commits_to _pr_github.png)
 
 ---
 
