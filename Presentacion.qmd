@@ -496,11 +496,15 @@ git commit -m "add new feature"
 git push origin new-feature
 ```
 
+---
+
 Click en el link... y...
+
+![](img/link_to_PR.png)
 
 ---
 
-Pull request
+Creamos el *pull request*
 
 ![](img/merge_pull_request.png){.r-stretch fig-align="center"}
 
@@ -512,7 +516,7 @@ Merged pull request
 
 ---
 
-## Codigos ejecutados
+## Códigos ejecutados
 
 
 ```{{bash}}
