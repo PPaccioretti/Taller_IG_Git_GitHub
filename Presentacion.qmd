@@ -1,6 +1,7 @@
 ---
 format:
-  revealjs: 
+  revealjs:
+    hash-type: number 
     slide-number: true
     chalkboard: 
       buttons: true
@@ -45,7 +46,7 @@ Verónica Andreo
 
 Por defecto `git` está instalado en la mayoría de las PCs que tienen Mac o Linux. En Windows se puede instalar desde [aquí](https://gitforwindows.org/)
 
-Quarto puede usarse con: VS Code, RStudio, Jupyter, Neovim, otros editores de texto
+Quarto puede usarse con: VSCode, RStudio, Jupyter, Neovim, otros editores de texto
 :::
 
 ## Outline
@@ -74,7 +75,8 @@ Quarto puede usarse con: VS Code, RStudio, Jupyter, Neovim, otros editores de te
 
 ::::
 
-# ![](https://git-scm.com/images/logos/downloads/Git-Logo-2Color.svg){width="600px"}
+# {background-color="#1A428A" background-image="https://git-scm.com/images/logos/downloads/Git-Logo-2Color.svg"  background-size="60% auto" style="z-index: 4;"}
+
 
 
 ## Qué es `git`?
@@ -327,7 +329,8 @@ Repository
 
 ::::
 
-# ![](https://miro.medium.com/max/1400/0*ZLfPdBuEy3SgJscw.jpg)
+
+# {background-image="https://miro.medium.com/max/1200/1*dDNpLKu_oTLzStsDTnkJ-g.png" background-color="#1A428A" background-size="60% auto" style="z-index: 4;"}
 
 
 ## Qué es GitHub? 
@@ -355,10 +358,9 @@ Repository
 
 ::::
 
----
+## GitHub workflow
 
 ### Principales acciones en GitHub
-
 
 ::: {style="font-size: calc(0.61em + 0.5vmin);"}
 Fork
@@ -381,12 +383,12 @@ Merge
 
 # Workflows en GitHub {background-color="#1A428A"}
 
+::: {style="font-size: 2.2em; color: #e81f76"}
+ Proyecto propio 
+:::
 
 ---
 
-## Proyecto propio
-
----
 
 a. Crear un repo remoto y luego clonarlo
 
@@ -432,7 +434,11 @@ git pull
 
 ---
 
-## Proyecto colaborativo
+# Workflows en GitHub {background-color="#1A428A"}
+
+::: {style="font-size: 2.2em; color: #e81f76"}
+ Proyecto colaborativo
+:::
 
 ---
 
@@ -507,15 +513,17 @@ Click en el link... y...
 Creamos el *pull request*
 
 ![](img/merge_pull_request.png){.r-stretch fig-align="center"}
+
 ---
 
 Una vez creado el PR, se pueden seguir haciendo commits desde la 
 *feature branch* al PR
 
 ![](img/commits_to_pr.png)
+
 ---
 
-![](commits_to_pr_github.png)
+![](img/commits_to_pr_github.png)
 
 ---
 
@@ -536,6 +544,34 @@ curl -o .gitignore --fail --show-error --silent --location https://raw.github.co
 # curl -o .gitignore --fail --show-error --silent --location https://raw.github.com/github/gitignore/master/Python.gitignore
 ```
 
+## Crear el repo local
+
+
+Creando un repositorio local nuevo
+
+```{.bash code-line-numbers="1-4"}
+echo "# Taller_IG_Git_GitHub" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/PPaccioretti/Taller_IG_Git_GitHub.git
+git branch -M main
+git push -u origin main
+```
+
+## Agregar el remoto
+
+Agregando el repositorio remoto en un repositorio local
+
+```{.bash code-line-numbers="5-7"}
+echo "# Taller_IG_Git_GitHub" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/PPaccioretti/Taller_IG_Git_GitHub.git
+git branch -M main
+git push -u origin main
+```
 
 ## Trabajo colaborativo 
 
