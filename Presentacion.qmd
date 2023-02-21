@@ -1,6 +1,7 @@
 ---
 format:
-  revealjs: 
+  revealjs:
+    hash-type: number 
     slide-number: true
     chalkboard: 
       buttons: true
@@ -46,9 +47,9 @@ Verónica Andreo
 
 ::: {.callout-note appearance="simple"}
 
-Por defecto Git está instalado en la mayoría de las PCs que tienen Mac o Linux. En Windows se puede instalar desde [aqui](https://gitforwindows.org/)
+Por defecto git está instalado en la mayoría de las PCs que tienen Mac o Linux. En Windows se puede instalar desde [aqui](https://gitforwindows.org/)
 
-Quarto puede usarse con: VS Code, RStudio, Jupyter, Neovim, otros editores de texto
+Quarto puede usarse con: VSCode, RStudio, Jupyter, Neovim, otros editores de texto
 :::
 
 ## Outline
@@ -56,7 +57,7 @@ Quarto puede usarse con: VS Code, RStudio, Jupyter, Neovim, otros editores de te
 :::: {.columns}
 
 ::: {.column width="50%"}
-- Que es Git 
+- Que es git 
 - Git Workflow local
   * Crear un repositorio (*repo*)
   * Agregar archivos, _commit_ 
@@ -74,7 +75,7 @@ Quarto puede usarse con: VS Code, RStudio, Jupyter, Neovim, otros editores de te
 
 ::::
 
-## Qué es Git?
+## Qué es git?
 
 - Es un programa de control de versiones por línea de comandos que permite:
   - Administrar archivos, carpetas
@@ -365,6 +366,9 @@ Es una plataforma que contiene repositorios almacenados en la nube, diferentes d
 
 ::::
 
+## GitHub workflow
+
+![](https://learning.nceas.ucsb.edu/2020-02-RRCourse/images/github-workflows-fork.png){.r-stretch fig-align="center"}
 
 ## Principales acciones en GitHub
 
@@ -407,6 +411,10 @@ Merge
 
 ---
 
+![](img/create_fork.png){.r-stretch fig-align="center"}
+
+---
+
 ![](img/fork_created.png){.r-stretch fig-align="center"}
 
 ---
@@ -416,10 +424,6 @@ Merge
 ---
 
 ![](img/git_clone_repo_terminal.png){.r-stretch fig-align="center"}
-
----
-
-![](img/create_fork.png){.r-stretch fig-align="center"}
 
 ---
 
@@ -446,26 +450,30 @@ curl -o .gitignore --fail --show-error --silent --location https://raw.github.co
 # curl -o .gitignore --fail --show-error --silent --location https://raw.github.com/github/gitignore/master/Python.gitignore
 ```
 
-## Importar Proyecto Propio
+## Crear el repo local
 
 
 Creando un repositorio local nuevo
 
-```{{bash}}
+```{.bash code-line-numbers="1-4"}
 echo "# Taller_IG_Git_GitHub" >> README.md
 git init
 git add README.md
 git commit -m "first commit"
-git branch -M main
 git remote add origin https://github.com/PPaccioretti/Taller_IG_Git_GitHub.git
+git branch -M main
 git push -u origin main
 ```
 
-## Imoportar Proyecto Propio
+## Agregar el remoto
 
 Agregando el repositorio remoto en un repositorio local
 
-```{{bash}}
+```{.bash code-line-numbers="5-7"}
+echo "# Taller_IG_Git_GitHub" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
 git remote add origin https://github.com/PPaccioretti/Taller_IG_Git_GitHub.git
 git branch -M main
 git push -u origin main
