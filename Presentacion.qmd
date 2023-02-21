@@ -20,14 +20,11 @@ output-file: index.html
 :::
 
 
-# Git y GitHub {background-color="#1A428A" background-image="img/presentation_title.png" background-size="auto 100%" background-position="right" style="height: 100%;  display: flex; align-items: center; justify-content: left; z-index: 4;" } 
-
-<!-- ... y un poquito de Quarto -->
-
+# git y GitHub { background-color="#1A428A" background-image="img/presentation_title_edited.png" background-size="auto 100%" background-position="right" style="height: 100%;  display: flex; align-items: center; justify-content: left; z-index: 4;" } 
 
 :::: {style="height: 100%; display: flex; align-items: center; justify-content: left;"} 
 
-::: {style="font-size: 1.5em; justify-content: 'center';"}
+::: {style="font-size: 1.3em; justify-content: 'center';"}
 Pablo Paccioretti
 
 Verónica Andreo
@@ -39,43 +36,49 @@ Verónica Andreo
  
 :::
 
-## Presteps
+## Prep steps
 
-- Tener git instalado en la PC [Windows](https://gitforwindows.org/)
-- Crear cuenta en [GitHub](https://github.com/)
+- Tener `git` instalado en la PC 
+- Crear una cuenta en [GitHub](https://github.com/)
 - Instalar Quarto ([https://quarto.org/docs/download/](https://quarto.org/docs/download/))
 
 ::: {.callout-note appearance="simple"}
 
-Por defecto git está instalado en la mayoría de las PCs que tienen Mac o Linux. En Windows se puede instalar desde [aqui](https://gitforwindows.org/)
+Por defecto `git` está instalado en la mayoría de las PCs que tienen Mac o Linux. En Windows se puede instalar desde [aquí](https://gitforwindows.org/)
 
 Quarto puede usarse con: VSCode, RStudio, Jupyter, Neovim, otros editores de texto
 :::
 
 ## Outline
 
-:::: {.columns}
+:::: {.columns style="font-size: 0.92em;"}
 
-::: {.column width="50%"}
-- Que es git 
-- Git Workflow local
-  * Crear un repositorio (*repo*)
-  * Agregar archivos, _commit_ 
+::: {.column width="47%"}
+- Qué es `git` 
+- `git` workflow local
+  * Iniciar un repositorio (*repo*)
+  * Agregar/editar archivos y registrar cambios, _commit_ 
 :::
 
-::: {.column width="50%"}
-- Qué es GitHub
-- GitHub Workflow: Proyecto personal 
+::: {.column width="4%"}
+:::
+
+::: {.column width="47%"}
+- Qué es [GitHub](https://github.com/)
+- GitHub Workflow: __Proyecto personal__
   * Crear repo
   * Push / Pull
-- GitHub Workflow: Proyecto colaborativo
+- GitHub Workflow: __Proyecto colaborativo__
   * Fork / Clone
   * Pull request
 :::
 
 ::::
 
-## Qué es git?
+# ![](https://git-scm.com/images/logos/downloads/Git-Logo-2Color.svg){width="600px"}
+
+
+## Qué es `git`?
 
 - Es un programa de control de versiones por línea de comandos que permite:
   - Administrar archivos, carpetas
@@ -85,23 +88,24 @@ Quarto puede usarse con: VSCode, RStudio, Jupyter, Neovim, otros editores de tex
 ## ¿Qué es un repositorio?
 
 - repo = repositorio = _repository_
+- Es básicamente un directorio
 - Por lo general es utilizado para organizar un *único* proyecto
-- Los repos pueden contener carpetas, archivos, imágenes, videos...
+- Los repos pueden contener otros directorios, archivos, imágenes, videos...
 
 
-## Git Workflow local
+## `git` Workflow local
 
-:::: {.columns}
+:::: {.columns style="font-size: 0.92em;"}
 
-::: {.column width="75%"}
+::: {.column width="80%"}
 
-(@) Iniciar un nuevo proyecto en una carpeta
+(@) Iniciar un repositorio en una carpeta
 
 ```{{bash}}
 git init
 ```
 
-(@) Agregar/Editar archivos
+(@) Agregar/editar archivos
 (@) Registrar cada cambio
 
 ```{{bash}}
@@ -114,14 +118,13 @@ git commit -m "Un mensaje descriptivo y corto"
 ```
 :::
 
-::: {.column width="25%"}
+::: {.column width="20%"}
 
 ```{mermaid}
-%%| fig-height: 5
-
+%%|fig-height: 5
 
 graph TD
-  A[Working] -->|add| B(Staging index)
+  A[Working] -->|add| B(Staging)
   B --> |commit| C(Repository)
 ```
 
@@ -130,10 +133,10 @@ graph TD
 ::::
 
 
-## Tips sobre Git
+## Tips sobre `git`
 
 ::: {.callout-tip appearance="simple"}
-Para utilizarlo no es necesario internet. Es posible trabajar manera local y luego cargar/combinar los cambios.
+Para utilizar `git` no es necesario internet. Es posible trabajar sólo  localmente para llevar un control de versiones.
 :::
 
 ::: {.callout-important}
@@ -157,7 +160,7 @@ Mediante una oración corta e informativa ($\le 72$ caracteres), se debería des
 ```{{bash}}
 git log
 ```
-- Cómo ver qué archivos se están modificando? 
+- Cómo ver qué archivos se han modificado? 
 
 ```{{bash}}
 git status
@@ -170,7 +173,7 @@ git diff
 git diff nombreArchivo.txt
 ```
 
-## Otros comandos que podrían resultar útiles
+## Otros comandos útiles
 
 ::::: {.columns}
 
@@ -181,7 +184,9 @@ Eliminar archivos del repo
 git rm nombreArchivo.py
 ```
 ::::
-:::: {.column width="60%"}
+::: {.column width="10%"}
+:::
+:::: {.column width="50%"}
 ::: {.callout-important}
 ## Cuidado! 
 
@@ -190,43 +195,28 @@ Esto también elimina el archivo del repositorio.
 ::::
 :::::
 
-Renombrar/Mover archivos
+<br>
+Renombrar/mover archivos
 
 ```{{bash}}
 git mv nombreArchivo.py OtroNombre.py
 ```
 
 
-## Los comandos más usados
+## Trabajando con *branches*
 
-```{{bash}}
-git init
-git status
-git log
-git add
-git commit -m "blabla"
-git diff
-git rm
-git mv
-```
-
-## Ramas / Branches
-
-- Permiten probar nuevos cambios
-- Si un cambio no funcionó, se puede eliminar la rama sin necesidad de deshacer cambios en la rama principal
-- Si un cambio funcionó, se puede combinar (merge) a la rama principal
+- Las ramas o *branches* permiten probar nuevos cambios (*feature branch*)
+- Si un cambio no funcionó, se puede eliminar la rama sin necesidad de deshacer cambios en la rama principal (*main*)
+- Si un cambio funcionó, se puede combinar (*merge*) a la rama principal
 - Siempre se utiliza el mismo directorio de trabajo
 
 --- 
 
-:::: {.columns}
-
-::: {.column width="50%"}
-
-- En qué rama _branch_ estoy?
+- En qué rama estoy?
 ```{{bash}}
 git branch
 ```
+
 - Cómo creo una rama?
 ```{{bash}}
 git branch nueva_rama
@@ -236,9 +226,6 @@ git branch nueva_rama
 ```{{bash}}
 git checkout nueva_rama
 ```
-:::
-
-::: {.column width="50%"}
 
 - Cómo creo y cambio a la nueva rama?
 ```{{bash}}
@@ -249,37 +236,37 @@ git checkout -b nueva_rama
 ```{{bash}}
 git diff una_rama..otra_rama
 ```
-:::
-
-::::
-
 
 ---
 
+::: {layout-valign="middle"}
 ::: {.callout-tip}
-## Algunos tips
+## Algunos tips para trabajar con ramas
 
-- Se puede cambiar entre ramas y realizar commits en cada una de ellas. 
+- Se puede cambiar entre ramas y realizar *commits* en cada una de ellas. 
 
 - Cada rama está separada y es independiente de las otras ramas, pero contiene todo lo que tenía la rama principal al momento del _branching_. 
 
-- Antes de cambiar entre ramas, el directorio de trabajo debería estar sin conflictos ni cambios no confirmados (_commiteados_).
+- Antes de cambiar entre ramas, el directorio de trabajo debería estar sin conflictos ni cambios no registrados (_commiteados_).
+:::
 :::
 
+## Cómo combinar ramas? 
 
-
-## Cómo se combinan ramas? 
-
-Desde la rama desde la cual se quiere unir la otra rama
+Supongamos que agregamos algo nuevo en una *feature_branch* y lo queremos incorporar a la rama principal *main*. Cambiamos a main y desde allí traemos los cambios realizados en *feature_branch*:
 
 ```{{bash}}
-git merge la_otra_rama
+git checkout main
+git merge feature_branch
 ```
+
+![](https://images.prismic.io/launchdarkly/abb1e704-200d-491e-8410-22d9e024b669_image1.png?ixlib=gatsbyFP&auto=compress%2Cformat&fit=max&rect=0%2C0%2C624%2C231&w=1400&h=518){fig-align="center"}
+
 
 ## Conflictos cuando se combinan cambios/ramas
 
 - Se dan cuando dos _commits_ tienen modificaciones sobre la misma línea de código.
-- git identificará los conflictos pero no los solucionará; queda a criterio del usuario.
+- `git` identificará los conflictos pero no los solucionará; queda a criterio del usuario.
 
 Alternativas:
 
@@ -288,16 +275,13 @@ Alternativas:
 
 ---
 
-::: {.callout-tip}
-## Como evitar algunos conflictos
+## Como evitar conflictos
 
-- Combinar los trabajos en la rama de manera frecuente
+- Registrar los cambios en la rama de trabajo de manera frecuente
 - Mantener cada commit simple y enfocado a determinados cambios/soluciones
-- Combinar los cambios en la rama de trabajo con la rama principal de manera frecuente. 
-:::
+- Combinar los cambios en la rama de trabajo (*feature_branch* o *bug_fixing_branch*) con la rama principal de manera frecuente. 
 
-
-
+---
 
 ```{{bash}}
 git log  --graph --oneline --all --decorate
@@ -306,7 +290,7 @@ git log  --graph --oneline --all --decorate
 
 ## Volviendo en el tiempo
 
-Podemos ver los cambios que se estuvieron realizando y volver a versiones anteriores que ya fueron confirmadas (_commiteadas_)
+Podemos ver los cambios que se estuvieron realizando y volver a versiones anteriores que ya fueron registradas (`_commiteadas_`)
 
 ```{{bash}}
 git checkout archivo
@@ -314,11 +298,11 @@ git checkout branch
 git checkout commitID
 ```
 
+<br>
 
 ::::{.columns}
 
-:::{.column}
-
+:::{.column style="font-size: 0.8em;"}
 
 Deshacer cambios hechos *antes* de hacer el commit. 
 
@@ -331,7 +315,7 @@ Staging area
 
 :::
 
-:::{.column}
+:::{.column style="font-size: 0.8em;"}
 Deshacer cambios hechos *luego* de hacer el commit. 
 ```{{bash}}
 git commit --ammend -m "bla bla"
@@ -344,18 +328,24 @@ Repository
 
 ::::
 
+# ![](https://miro.medium.com/max/1400/0*ZLfPdBuEy3SgJscw.jpg)
+
+
 ## Qué es GitHub? 
 
-GitHub ayuda a colaborar entre usuarios usando git. 
+- Es una plataforma que contiene repositorios almacenados en la nube, diferentes desarrolladores pueden contribuir a un único proyecto y ver los cambios realizados por otras personas. 
+- GitHub ayuda a colaborar entre usuarios usando git. 
 
-Es una plataforma que contiene repositorios almacenados en la nube, diferentes desarrolladores pueden contribuir a un único proyecto y ver los cambios realizados por otras personas. 
+---
 
-----
+![](img/local_and_remote_workflow.png){.r-stretch fig-align="center"} 
+
+---
 
 ::::{.columns}
 
 :::{.column}
-##### git
+##### `git`
 - git es un software para control de versiones. Permite llevar un registro de los cambios realizados en un proyecto.
 :::
 
@@ -370,32 +360,54 @@ Es una plataforma que contiene repositorios almacenados en la nube, diferentes d
 
 ![](https://learning.nceas.ucsb.edu/2020-02-RRCourse/images/github-workflows-fork.png){.r-stretch fig-align="center"}
 
-## Principales acciones en GitHub
+
+### Principales acciones en GitHub
 
 ::: {style="font-size: calc(0.61em + 0.5vmin);"}
 Fork
-: El proceso de copiar el repositorio de otro desarrollador para poder modificarlo. 
+: El proceso de copiar el repositorio remoto de otro desarrollador en nuestro GitHub
 
 Clone
 : Crea una copia local del repositorio y sincroniza entre las dos ubicaciones
 
 Pull 
-: Descarga contenido desde un repositorio remoto y actualizar el repositorio local 
+: Descarga contenido desde un repositorio remoto y actualiza el repositorio local 
 
 Pull request
-: Una vez que se realizan los cambios, se pueden sugerir mediante _pull request_
+: Una vez que se realizan cambios, se pueden sugerir mediante _pull request_
 
 Merge
-: El dueño del repositorio puede combinar los cambios 
+: La persona dueña del repositorio puede combinar los cambios sugeridos
 
 :::
 
 
-# Aplicación en GitHub {background-color="#1A428A"}
+# Workflows en GitHub {background-color="#1A428A"}
+
 
 ---
 
+## Proyecto propio
+
+---
+
+a. Crear un repo remoto y luego clonarlo
+
 ![](img/Creacion_Repo_GitHub.png){.r-stretch fig-align="center"}
+
+---
+
+b. Crear un repo local y agregar el remoto
+
+```{{bash}}
+echo "# Taller_IG_Git_GitHub" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/PPaccioretti/Taller_IG_Git_GitHub.git
+git push -u origin main
+```
 
 ---
 
@@ -407,39 +419,116 @@ Merge
 
 ---
 
-![](img/fork_1.png){.r-stretch fig-align="center"}
+## Trabajo en repo propio
+
+Hacer modificaciones locales y subirlas al repo remoto (*pushear*) 
+```{{bash}}
+git add path/to/fileschanged
+git commit -m "add new version of file x"
+git push
+```
+
+Bajar cambios remotos/actualizar repo local
+```{{bash}}
+git pull
+```
 
 ---
 
-![](img/create_fork.png){.r-stretch fig-align="center"}
+## Proyecto colaborativo
 
 ---
 
-![](img/fork_created.png){.r-stretch fig-align="center"}
+*Fork-ear* el repo remoto al que queremos contribuir
+
+![](img/fork_1.png){width="50%"}
 
 ---
 
-![](img/clone_fork_https.png){.r-stretch fig-align="center"}
+*Fork-ear* el repo remoto al que queremos contribuir
+
+![](img/create_fork.png)
 
 ---
 
-![](img/git_clone_repo_terminal.png){.r-stretch fig-align="center"}
+Fork (copia del repo original) en nuestro GitHub (remoto)
+
+![](img/fork_created.png)
 
 ---
+
+Clonar el fork - online
+
+![](img/clone_fork_https.png)
+
+---
+
+Clonar el fork - bajarlo a nuestra PC
+
+![](img/git_clone_repo_terminal.png)
+
+---
+
+Decirle quien es el repo remoto madre
 
 ![](img/add_upstream.png){.r-stretch fig-align="center"}
 
 ---
 
-![](img/merge_pull_request.png){.r-stretch fig-align="center"}
+### Qué estuvimos haciendo?
+
+![](https://learning.nceas.ucsb.edu/2020-02-RRCourse/images/github-workflows-fork.png){.r-stretch fig-align="center"}
 
 ---
+
+Y cómo contribuimos modificaciones al repo de alguien más?
+
+1. En nuestra copia local, creamos una nueva rama (*feature branch*)
+2. Hacemos modificaciones, las agregamos al area de staging y las registramos (todo esto es *local*)
+3. Necesitamos subir nuestros cambios a nuestra copia remota (*origin*)
+4. Desde nuestro fork, sugerimos el cambio al repo original (*upstream*) via un *pull request*
+
+---
+
+En commandos...
+```{{bash}}
+git checkout -b new-feature
+git status
+git add file_modified1 file_modified2 new_file
+git commit -m "add new feature"
+git push origin new-feature
+```
+
+---
+
+Click en el link... y...
+
+![](img/link_to_PR.png)
+
+---
+
+Creamos el *pull request*
+
+![](img/merge_pull_request.png){.r-stretch fig-align="center"}
+---
+
+Una vez creado el PR, se pueden seguir haciendo commits desde la 
+*feature branch* al PR
+
+![](img/commits_to_pr.png)
+---
+
+![](commits_to_pr_github.png)
+
+---
+
+Merged pull request
 
 ![](img/merged_pr.png){.r-stretch fig-align="center"}
 
 ---
 
-## Codigos ejecutados
+## Códigos ejecutados
 
 
 ```{{bash}}
