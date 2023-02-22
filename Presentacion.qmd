@@ -40,7 +40,8 @@ Verónica Andreo
 
 - Tener `git` instalado en la PC 
 - Crear una cuenta en [GitHub](https://github.com/)
-- Instalar Quarto ([https://quarto.org/docs/download/](https://quarto.org/docs/download/))
+- Crear [token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-fine-grained-personal-access-token) en GitHub
+- _Opcional_: Instalar Quarto ([https://quarto.org/docs/download/](https://quarto.org/docs/download/))
 
 ::: {.callout-note appearance="simple"}
 
@@ -53,38 +54,47 @@ Quarto puede usarse con: VSCode, RStudio, Jupyter, Neovim, otros editores de tex
 
 :::: {.columns style="font-size: 0.92em;"}
 
-::: {.column width="47%"}
+::: {.column width="48%"}
 - Qué es `git` 
 - `git` workflow local
   * Iniciar un repositorio (*repo*)
   * Agregar/editar archivos y registrar cambios, _commit_ 
+  * Ramas / _Branches_ 
 :::
 
-::: {.column width="4%"}
+::: {.column width="2%"}
 :::
 
-::: {.column width="47%"}
+::: {.column width="48%"}
 - Qué es [GitHub](https://github.com/)
-- GitHub Workflow: __Proyecto personal__
-  * Crear repo
-  * Push / Pull
-- GitHub Workflow: __Proyecto colaborativo__
-  * Fork / Clone
-  * Pull request
+- GitHub Workflow: 
+  - __Proyecto personal__
+    * Crear repo
+    * Push / Pull
+  - __Proyecto colaborativo__
+    * Fork / Clone
+    * Pull request
 :::
 
 ::::
 
-# {background-color="#1A428A" background-image="https://git-scm.com/images/logos/downloads/Git-Logo-2Color.svg"  background-size="60% auto" style="z-index: 4;"}
+
+---
+
+![](img/local_and_remote_workflow.png){.r-stretch fig-align="center"} 
+
+
+# {background-color="#fefefe" background-image="https://git-scm.com/images/logos/downloads/Git-Logo-2Color.svg"  background-size="60% auto" style="z-index: 4;"}
 
 
 
 ## Qué es `git`?
 
-- Es un programa de control de versiones por línea de comandos que permite:
-  - Administrar archivos, carpetas
-  - Realizar un seguimiento de los cambios a lo largo del tiempo
-  - Volver a versiones anteriores
+ Es un programa de control de versiones por línea de comandos que permite:
+
+ - Administrar archivos, carpetas
+ - Realizar un seguimiento de los cambios a lo largo del tiempo
+ - Volver a versiones anteriores
 
 ## ¿Qué es un repositorio?
 
@@ -137,7 +147,7 @@ graph TD
 ## Tips sobre `git`
 
 ::: {.callout-tip appearance="simple"}
-Para utilizar `git` no es necesario internet. Es posible trabajar sólo  localmente para llevar un control de versiones.
+Para utilizar `git` no es necesario internet. Es posible trabajar de manera local para llevar un control de versiones.
 :::
 
 ::: {.callout-important}
@@ -167,7 +177,7 @@ git log
 git status
 ```
 
-- Cómo ver qué cambió de cada archivo? 
+- Cómo ver qué se cambió de cada archivo? 
 
 ```{{bash}}
 git diff
@@ -278,20 +288,20 @@ Alternativas:
 
 ## Como evitar conflictos
 
-- Registrar los cambios en la rama de trabajo de manera frecuente
-- Mantener cada commit simple y enfocado a determinados cambios/soluciones
-- Combinar los cambios en la rama de trabajo (*feature_branch* o *bug_fixing_branch*) con la rama principal de manera frecuente. 
+- Registrar los cambios en la rama de trabajo de manera frecuente.
+- Mantener cada commit simple y enfocado a determinados cambios/soluciones.
+- Combinar los cambios en la rama de trabajo (*feature_branch* o *bug_fixing_branch*) con la rama principal de manera frecuente.
 
----
+<!-- ---
 
 ```{{bash}}
 git log  --graph --oneline --all --decorate
-```
+``` -->
 
 
 ## Volviendo en el tiempo
 
-Podemos ver los cambios que se estuvieron realizando y volver a versiones anteriores que ya fueron registradas (`_commiteadas_`)
+Podemos ver los cambios que se estuvieron realizando y volver a versiones anteriores que ya fueron registradas (_`commiteadas`_).
 
 ```{{bash}}
 git checkout archivo
@@ -330,17 +340,13 @@ Repository
 ::::
 
 
-# {background-image="https://miro.medium.com/max/1200/1*dDNpLKu_oTLzStsDTnkJ-g.png" background-color="#1A428A" background-size="60% auto" style="z-index: 4;"}
+# {background-image="https://miro.medium.com/max/1200/1*dDNpLKu_oTLzStsDTnkJ-g.png" background-color="#fefefe" background-size="60% auto" style="z-index: 4;"}
 
 
 ## Qué es GitHub? 
 
 - Es una plataforma que contiene repositorios almacenados en la nube, diferentes desarrolladores pueden contribuir a un único proyecto y ver los cambios realizados por otras personas. 
-- GitHub ayuda a colaborar entre usuarios usando git. 
-
----
-
-![](img/local_and_remote_workflow.png){.r-stretch fig-align="center"} 
+- GitHub ayuda a colaborar entre usuarios usando `git`. 
 
 ---
 
@@ -358,11 +364,16 @@ Repository
 
 ::::
 
+---
+
+![](img/local_and_remote_workflow.png){.r-stretch fig-align="center"} 
+
 ## GitHub workflow
 
-### Principales acciones en GitHub
+Principales acciones en GitHub
 
-::: {style="font-size: calc(0.61em + 0.5vmin);"}
+::: {style="font-size: calc(0.58em + 0.5vmin);"}
+
 Fork
 : El proceso de copiar el repositorio remoto de otro desarrollador en nuestro GitHub
 
@@ -408,6 +419,16 @@ git remote add origin https://github.com/PPaccioretti/Taller_IG_Git_GitHub.git
 git push -u origin main
 ```
 
+<hr>
+
+b. Si el repo local existe, agregar el remoto
+
+```{{bash}}
+git branch -M main
+git remote add origin https://github.com/PPaccioretti/Taller_IG_Git_GitHub.git
+git push -u origin main
+```
+
 ---
 
 ![](img/Importar_Repo_GitHub.png){.r-stretch fig-align="center"}
@@ -432,8 +453,6 @@ Bajar cambios remotos/actualizar repo local
 git pull
 ```
 
----
-
 # Workflows en GitHub {background-color="#1A428A"}
 
 ::: {style="font-size: 2.2em; color: #e81f76"}
@@ -442,37 +461,36 @@ git pull
 
 ---
 
-*Fork-ear* el repo remoto al que queremos contribuir
+{{< fa code-fork >}}  *Fork-ear* el repo remoto al que queremos contribuir 
 
-![](img/fork_1.png){width="50%"}
 
----
 
-*Fork-ear* el repo remoto al que queremos contribuir
+::: {.r-stack}
 
-![](img/create_fork.png)
+![](img/fork_1.png){.fragment}
 
----
+![](img/create_fork.png){.fragment .fade-in-then-out}
 
-Fork (copia del repo original) en nuestro GitHub (remoto)
-
-![](img/fork_created.png)
+![](img/fork_created.png){.fragment .fade-in-then-out}
+:::
 
 ---
 
-Clonar el fork - online
+Clonar el fork y descargarlo
+
+
+::: {layout="[[-20, 60, -20], [-10, 80, -10]]"}
 
 ![](img/clone_fork_https.png)
 
----
-
-Clonar el fork - bajarlo a nuestra PC
-
 ![](img/git_clone_repo_terminal.png)
 
+:::
+
+
 ---
 
-Decirle quien es el repo remoto madre
+Decirle quien es el repo remoto madre (_`upstream`_)
 
 ![](img/add_upstream.png){.r-stretch fig-align="center"}
 
@@ -484,16 +502,17 @@ Decirle quien es el repo remoto madre
 
 ---
 
-Y cómo contribuimos modificaciones al repo de alguien más?
+Cómo contribuimos al repo de alguien más?
 
 1. En nuestra copia local, creamos una nueva rama (*feature branch*)
-2. Hacemos modificaciones, las agregamos al area de staging y las registramos (todo esto es *local*)
-3. Necesitamos subir nuestros cambios a nuestra copia remota (*origin*)
-4. Desde nuestro fork, sugerimos el cambio al repo original (*upstream*) via un *pull request*
+2. Hacemos modificaciones, las agregamos `add` al area de staging y las registramos `commit`(todo esto es *local*)
+3. Subir los cambios a nuestra copia remota o *fork* (*origin*)
+4. Desde nuestro *fork*, sugerimos el cambio al repo original (*upstream*) via un *pull request*
 
 ---
 
 En commandos...
+
 ```{{bash}}
 git checkout -b new-feature
 git status
@@ -501,10 +520,7 @@ git add file_modified1 file_modified2 new_file
 git commit -m "add new feature"
 git push origin new-feature
 ```
-
----
-
-Click en el link... y...
+Ejemplo: 
 
 ![](img/link_to_PR.png)
 
@@ -519,11 +535,15 @@ Creamos el *pull request*
 Una vez creado el PR, se pueden seguir haciendo commits desde la 
 *feature branch* al PR
 
-![](img/commits_to_pr.png)
 
----
+::: {.r-stack}
 
-![](img/commits_to_pr_github.png)
+![](img/commits_to_pr.png){width=70% fig-align="center" .fragment .fade-in-then-out}
+
+![](img/commits_to_pr_github.png){width=90% fig-align="center" .fragment .fade-in-then-out}
+
+:::
+
 
 ---
 
@@ -531,117 +551,24 @@ Merged pull request
 
 ![](img/merged_pr.png){.r-stretch fig-align="center"}
 
----
 
-## Códigos ejecutados
+## Manos a la obra
 
+::: {.callout-note icon=false}
+## Ejercitación
+1. Crea tu repo en GitHub, clonalo localmente y pushea alguna modificación
+2. Forkea el repo de esta presentación, clonalo y hacé un pull request
+:::
 
-```{{bash}}
-py -m pip install jupyter #sudo
+# Muchas gracias! {background-color="#1A428A"}
 
-git init .
-curl -o .gitignore --fail --show-error --silent --location https://raw.github.com/github/gitignore/master/R.gitignore
-# curl -o .gitignore --fail --show-error --silent --location https://raw.github.com/github/gitignore/master/Python.gitignore
-```
+:::: {style="font-size: 0.6em;"}
 
-## Crear el repo local
+[veroandreo\@gmail.com](mailto:veroandreo@gmail.com)
 
+[pablopaccioretti\@agro.unc.edu.ar](mailto:pablopaccioretti@agro.unc.edu.ar)
 
-Creando un repositorio local nuevo
-
-```{.bash code-line-numbers="1-4"}
-echo "# Taller_IG_Git_GitHub" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git remote add origin https://github.com/PPaccioretti/Taller_IG_Git_GitHub.git
-git branch -M main
-git push -u origin main
-```
-
-## Agregar el remoto
-
-Agregando el repositorio remoto en un repositorio local
-
-```{.bash code-line-numbers="5-7"}
-echo "# Taller_IG_Git_GitHub" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git remote add origin https://github.com/PPaccioretti/Taller_IG_Git_GitHub.git
-git branch -M main
-git push -u origin main
-```
-
-## Trabajo colaborativo 
-
-- Clonar proyecto forkeado
-
-```{{bash}}
-git clone https://github.com/veroandreo/Taller_IG_Git_GitHub.git
-cd Taller_IG_Git_GitHub
-```
-
-- Agregar un repositorio remoto al proyecto
-
-```{{bash}}
-git remote add upstream https://github.com/PPaccioretti/Taller_IG_Git_GitHub.git
-git remote -v
-```
-
-```
-origin  https://github.com/veroandreo/Taller_IG_Git_GitHub.git (fetch)
-origin  https://github.com/veroandreo/Taller_IG_Git_GitHub.git (push)
-upstream  https://github.com/PPaccioretti/Taller_IG_Git_GitHub.git (fetch)
-upstream  https://github.com/PPaccioretti/Taller_IG_Git_GitHub.git (push)
-```
-
-## Descargando cambios
-
-```{.bash}
-$ git pull
-```
-
-```{.bash}
-remote: Enumerating objects: 11, done.
-remote: Counting objects: 100% (11/11), done.
-remote: Compressing objects: 100% (5/5), done.
-remote: Total 5 (delta 3), reused 0 (delta 0), pack-reused 0
-Unpacking objects: 100% (5/5), 1.41 KiB | 62.00 KiB/s, done.
-From https://github.com/PPaccioretti/Taller_IG_Git_GitHub
-   29e253f..23b8f56  main       -> origin/main
-Updating 29e253f..23b8f56
-Fast-forward
- .github/workflows/publish.yml | 25 +++++++++++++++++++++++++
- Presentacion.qmd              | 41 -----------------------------------------
- _quarto.yml                   |  4 ++++
- 3 files changed, 29 insertions(+), 41 deletions(-)
- create mode 100644 .github/workflows/publish.yml
-```
-
-## Descargando cambios - error
-
-```{.bash}
-$ git pull
-```
-
-```{.bash code-line-numbers="8-12"}
-remote: Enumerating objects: 10, done.
-remote: Counting objects: 100% (10/10), done.
-remote: Compressing objects: 100% (2/2), done.
-remote: Total 6 (delta 3), reused 5 (delta 3), pack-reused 0
-Unpacking objects: 100% (6/6), 1.18 KiB | 37.00 KiB/s, done.
-From https://github.com/PPaccioretti/Taller_IG_Git_GitHub
-   93c8128..845dc10  main       -> origin/main
-error: Your local changes to the following files would be overwritten by merge:
-        .gitignore
-        Presentacion.qmd
-Please commit your changes or stash them before you merge.
-Aborting
-Updating 93c8128..845dc10
-```
-
-
+::::
 <!-- ## Material de consulta
 
 https://kinsta.com/knowledgebase/git-vs-github/
