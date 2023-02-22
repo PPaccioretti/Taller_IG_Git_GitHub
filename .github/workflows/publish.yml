@@ -23,7 +23,7 @@ jobs:
 
       - name: Install and activate renv
         run: |
-          install.packages(c("rmarkdown"))
+          install.packages(c("rmarkdown", "reticulate"))
         shell: Rscript {0}
 
       - name: Install Python and Dependencies
